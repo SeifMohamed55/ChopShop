@@ -1,0 +1,157 @@
+body {
+    background-color: #41436A;
+}
+
+
+
+
+
+#crttitletxt {
+    text-align: left;
+    font-size: 20px;
+    color: #000000;
+    padding: 1%;
+    font-family: 'Times New Roman';
+    text-transform: capitalize;
+    background-color: #ffb7a0;
+    border-left: solid #fb7143;
+  }
+
+
+
+#nav ul {
+    text-align: left;
+    background-color: #984063;
+    padding: 0;
+    margin: 0;
+    overflow: hidden;
+    border-radius: 30px;
+    list-style-type: none;
+    position: sticky;
+    top: 0;
+}
+
+#nav li {
+    float: left;
+    padding: 40px;
+    display: block;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    ;
+}
+
+#nav li a {
+    font-family: 'Times New Roman', Times, serif;
+    color: #FE9677;
+    text-decoration: none;
+    padding: 20px;
+    font-style: none;
+    display: inline;
+}
+
+#navitem {
+    background-color: #905d71;
+}
+
+li a:hover:not(#navitem) {
+    background-color: #984063;
+}
+
+#nav li a:hover {
+    background-color: #9c4769;
+    transition: 0.2ms;
+}
+
+
+
+div.cartitem {
+    margin: 5px;
+    border: 1px solid #ccc;
+    float: left;
+    width: 250px;
+
+}
+
+div.cartitem:hover {
+    border: 1px solid #777;
+    font-weight: bold;
+}
+
+div.cartitem img {
+    width: 250px;
+    height: 250px;
+}
+
+div.desc {
+    padding: 15px;
+    text-align: center;
+    color: #FE9677;
+    font-family: sans-serif;
+}
+
+
+
+
+#back {
+    text-align: center;
+    padding: 1%;
+    text-transform: capitalize;
+    background-color: #ffb7a0;
+    border-left: solid #fb7143;
+    border-right: solid #fb7143;
+}
+
+#back a {
+    font-size: 20px;
+    color: #000000;
+    padding: 1%;
+    font-style: italic;
+    font-family: 'Times New Roman';
+    text-decoration: none;
+}
+
+#back a:hover {
+    font-size: 21px;
+
+    font-family: 'Times New Roman';
+}
+
+
+
+
+
+#about ul {
+    background-color: #984063;
+    text-align: left;
+    list-style-position: inside;
+    list-style-type: none;
+    border-radius: 30px;
+    padding-top: 3%;
+    padding-bottom: 3%;
+}
+
+#about a {
+    text-decoration: none;
+    color: #000000;
+}
+
+#Y {
+    list-style-image: url("../photos/iconyoutube.png");
+}
+
+#F {
+    list-style-image: url("../photos/iconfacebook.png");
+}
+
+#I {
+    list-style-image: url("../photos/iconinstagram.png");
+}
+
+#T {
+    list-style-image: url("../photos/icontwitter.png");
+}
+
+#about li:hover {
+    background-color: #9c4769;
+}
