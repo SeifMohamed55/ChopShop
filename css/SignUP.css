@@ -163,19 +163,19 @@ a{
     }
     
     #Y {
-      list-style-image: url("iconyoutube.png");
+      list-style-image: url("../photos/iconyoutube.png");
     }
     
     #F {
-      list-style-image: url("iconfacebook.png");
+      list-style-image: url("../photos/iconfacebook.png");
     }
     
     #I {
-      list-style-image: url("iconinstagram.png");
+      list-style-image: url("../photos/iconinstagram.png");
     }
     
     #T {
-      list-style-image: url("icontwitter.png");
+      list-style-image: url("../photos/icontwitter.png");
     }
     
     #about li:hover {
