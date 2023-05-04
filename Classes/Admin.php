@@ -1,32 +1,22 @@
 <?php
-include_once "Classes/Notifications.php";
-class Buyer extends User{
-    private  $followedSellers = array(); //array of users
-    private  $productCart = array(); //array of products
-    private  $wishlist = array(); // array of products
-    private int $noOfWishlist; // no of products in wishlist
-    private int $noOfProd;  // no of products in cart
-    private int $noFollowedSellers; // no of followed sellers
-    function __construct($ID, $email, $gender, $password, $fname, $lname, $banState, $phoneNum, $followedCategories, $followedSellers, $productCart, $wishlist ){
+class Admin extends User{
+
+    private $bannedUsers = array();
+    private $reportedUsers = array();
+
+    function __construct($ID, $email, $gender, $password, $fname, $lname, $banState, $phoneNum, $followedCategories){
         $this->ID = $ID;
         $this->email = $email;
         $this->password = $password;
         $this->fname = $fname;
         $this->lname = $lname;
         $this->banState = $banState;
-        $this->userType = UserType ::BUYER;
+        $this->gender = $gender;
+        $this->userType = UserType ::SELLER;
         $this->phoneNum = $phoneNum;
         $this->followedCategories = $followedCategories;
-        $this->followedSellers = $followedSellers;
-        $this->productCart = $productCart;
-        $this->wishlist = $wishlist;
-        $this->noOfWishlist = count($this->wishlist);
-        $this->noOfCateg = count($this->followedCategories);
-        $this->noFollowedSellers = count($this->followedSellers);
-        $this->noOfProd = count($this->productCart);
-        $this->gender = $gender;
-        $this->database = new Database(); 
-        $this->hash = substr(password_hash($this->password, PASSWORD_DEFAULT), 0, 70);
+        $this->noOfCateg = count($followedCategories);
+        $this->database = new Database();
 
     }
     function getID(){
@@ -56,24 +46,15 @@ class Buyer extends User{
     function getNoOfCateg(){
         return $this->noOfCateg;
     }
-    function getFollowedSellers(){
-        return $this->followedSellers;
-    }
-     function getFollowedCategories(){
+    function getFollowedCategories(){
         return $this->followedCategories;
     }
-    function getProductCart(){
-        return $this->productCart;
-    }
-    function getWishlist(){
-        return $this->wishlist;
-    }
-
     function setEmail($email){
         $this->email = $email;
     }
-    function setName($name){
-        $this->name = $name;
+    function setName($fname , $lname){
+        $this->fname = $fname;
+        $this->lname = $lname;
     }
     function setPhoneNumber($phoneNum){
         $this->phoneNum = $phoneNum;
@@ -87,23 +68,33 @@ class Buyer extends User{
     }
 
     function followCategory($category){
-       $this->noOfCateg++;
-       $this->followedCategories[$this->noOfCateg - 1] = $category;
+        $this->noOfCateg++;
+        $this->followedCategories[$this->noOfCateg - 1] = $category;
     }
-    function addToWishlist(Product $prod){
-        $this->noOfWishlist++;
-        $this->wishlist[$this->noOfWishlist - 1] = $prod;
-    }
-    function addToCart(Product $prod){
-        $this->noOfProd++;
-        $this->productCart[$this->noOfProd - 1] = $prod;
-    }
-
-    function reportUser_user($user){
+    function getBannedUsers(){
         //database
+
+        return $this->bannedUsers;
+    }
+    function getReportedUsers(){
+        //database
+
+        return $this->reportedUsers;
+    }
+    function banUser_user(User $user){
+        //database
+    }
+    function banUser_email(String $email){
+        //database
+    }
+    function unbanUser_email (String $email){
+        //database
+    }
+    function reportUser_user($user){
+
     }
     function reportUser_email($email){
-        //database
+
     }
     static function login($email, $password): bool{
         $hash = substr(password_hash($password, PASSWORD_DEFAULT), 0, 70);
@@ -117,19 +108,32 @@ class Buyer extends User{
         }
         return false;
     }
-    
     function register(): bool{
         $stmt = $this->database->execute("insert into 
         [user](email , password, fname, lname, ban_state, user_type, phone_num, gender)
          VALUES(?, ?, ?, ?, ?, ?, ?, ?)", array($this->email, $this->hash, $this->fname,
-          $this->lname, 0, UserType::BUYER, $this->phoneNum, $this->gender));
+          $this->lname, 0, UserType::ADMIN, $this->phoneNum, $this->gender));
         if($stmt)
             return true;
         return false;
 
     }
     function getNotified(){
-        //still
+
     }
-    
+    function deleteProduct_barcode(String $barcode){
+        //database
+    }
+    function deleteProduct_prod(Product $product){
+        //database
+    }
+    function addAdmin_email(String $email){
+            //database
+    }
+    function addAdmin_user(User $user){
+        //database
+    }
+    function deleteAdmin(String $email){
+        //database
+    }
 }

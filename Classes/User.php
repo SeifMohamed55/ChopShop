@@ -4,12 +4,16 @@ abstract class User implements Notifications{
     protected int $ID;
     protected string $email;
     protected string $password;
-    protected string $name;
+    protected string $hash;
+    protected string $fname;
+    protected string $lname;
     protected int $banState;
-    protected  $userType;
+    protected  int $userType;
     protected string $phoneNum;
+    protected  $gender;
     protected  $followedCategories = array();
     protected int $noOfCateg = 0;
+    protected Database $database;
     
    abstract function getID();
    abstract function getEmail(): String;
@@ -20,6 +24,7 @@ abstract class User implements Notifications{
    abstract function getPhoneNumber(): String;
    abstract function getFollowedCategories();
    abstract function getNoOfCateg();
+   abstract function getGender();
    abstract function setEmail($email);
    abstract function setName($name);
    abstract function setPhoneNumber($phoneNum);
@@ -28,4 +33,5 @@ abstract class User implements Notifications{
    abstract function reportUser_user($user);
    abstract function reportUser_email($email);
    abstract function login($email, $password): bool;
+   abstract function register(User $user): bool;
 }

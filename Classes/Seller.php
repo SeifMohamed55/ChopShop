@@ -3,17 +3,21 @@ class Seller extends User{
     private $onSaleProduct = array();
     private $noOfProd = 0;
 
-    function __construct($email, $password, $name, $banState, $phoneNum, $followedCategories, $onSaleProduct){
+    function __construct($ID, $email, $password, $fname, $lname, $banState, $phoneNum, $gender, $followedCategories, $onSaleProduct){
+        $this->ID = $ID;
         $this->email = $email;
         $this->password = $password;
-        $this->name = $name;
+        $this->fname = $fname;
+        $this->lname = $lname;
         $this->banState = $banState;
+        $this->gender = $gender;
         $this->userType = UserType ::SELLER;
         $this->phoneNum = $phoneNum;
         $this->followedCategories = $followedCategories;
         $this->noOfCateg = count($followedCategories);
         $this->onSaleProduct = $onSaleProduct;
         $this->onSaleProduct = count($onSaleProduct);
+        $this->database = new Database();
     }
     function getID(){
         return $this->ID;
@@ -35,6 +39,9 @@ class Seller extends User{
     }
     function getPhoneNumber(): String{
         return $this->phoneNum;
+    }
+    function getGender(){
+        return $this->gender;
     }
     function getNoOfCateg(){
         return $this->noOfCateg;
@@ -64,8 +71,27 @@ class Seller extends User{
     function reportUser_email($email){
         //database
     }
-    function login($email, $password): bool{
-        //database
+    static function login($email, $password): bool{
+        $hash = substr(password_hash($password, PASSWORD_DEFAULT), 0, 70);
+        $database = new Database();
+        $stmt = $database->execute("select email, [password] from [user] where email = ?", array($email));
+        if ($stmt){
+            $row = sqlsrv_fetch_array($stmt, SQLSRV_FETCH_ASSOC);
+            if($row['email'] == $email && $row['password'] == $hash){
+                return true;
+            }
+        }
+        return false;
+    }
+    function register(): bool{
+        $stmt = $this->database->execute("insert into 
+        [user](email , password, fname, lname, ban_state, user_type, phone_num, gender)
+         VALUES(?, ?, ?, ?, ?, ?, ?, ?)", array($this->email, $this->hash, $this->fname,
+          $this->lname, 0, UserType::SELLER, $this->phoneNum, $this->gender));
+        if($stmt)
+            return true;
+        return false;
+
     }
     function followCategory($category){
         $this->noOfCateg++;
