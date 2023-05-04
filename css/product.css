@@ -52,77 +52,38 @@ li a:hover:not(#navitem) {
 
 
 
-.divctgs {
-    color: whitesmoke;
-    height: 100px;
-    width: 100%;
-    padding-top: 3%;
-    padding-bottom: 3%;
-    font-size: 64px;
-    font-family: Georgia;
-    text-align: center;
-    -webkit-text-stroke: black 1px;
-    text-decoration: none;
-    background-repeat: no-repeat;
-    background-size: cover;
-}
-
-.ctgs {
-    color: whitesmoke;
-    height: 60px;
-    width: 100%;
-    padding-top: 3%;
-    padding-bottom: 3%;
-    font-size: 64px;
-    font-family: Georgia;
-    text-align: center;
-    -webkit-text-stroke: black 1px;
-    text-decoration: none;
-    background-repeat: no-repeat;
-    background-size: cover;
-
-}
-
-.divctgs:hover {
-    text-align: center;
-    height: 120px;
-    transition: 0.5s;
-}
-
-.divctgs:not(:hover) {
-    text-align: center;
-    height: 60px;
-    transition: 0.5s;
-}
 
 
-#Electronics {
-    background-image: url("../photos/ctgelectronics.jpg");
-}
 
-#Toys {
-    background-image: url("../photos/ctgtoys.jpg");
-}
 
-#Fashion {
-    background-image: url("../photos/ctgfashion.jpg");
-}
 
-#Kitchen {
-    background-image: url("../photos/ctgkitchen.jpg");
-}
 
-#Furniture {
-    background-image: url("../photos/ctgfurniture.jpg");
-}
 
-#HealthBeauty {
-    background-image: url("../photos/ctghealthbeauty.jpg");
-}
 
-#Sports {
-    background-image: url("../photos/ctgsports.jpg");
-}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -197,5 +158,3 @@ li a:hover:not(#navitem) {
 #about li:hover {
     background-color: #9c4769;
 }
-
-
