@@ -1,4 +1,6 @@
 <?php
+
+// 2 database notification tables Profile_update, paymentNotfication
 class Database {
     private $serverName;
     private $connectionInfo;
@@ -58,3 +60,23 @@ while( $row = sqlsrv_fetch_array( $stmt, SQLSRV_FETCH_ASSOC) ) {
 sqlsrv_free_stmt($stmt);
 
 */
+
+
+
+/*$stmt = sqlsrv_query( $conn, $sql);
+if( $stmt === false ) {
+     die( print_r( sqlsrv_errors(), true));
+}
+
+// Make the first (and in this case, only) row of the result set available for reading.
+if( sqlsrv_fetch( $stmt ) === false) {
+     die( print_r( sqlsrv_errors(), true));
+}
+
+// Get the row fields. Field indices start at 0 and must be retrieved in order.
+// Retrieving row fields by name is not supported by sqlsrv_get_field.
+$name = sqlsrv_get_field( $stmt, 0);
+echo "$name: ";
+
+$comment = sqlsrv_get_field( $stmt, 1);
+echo $comment;*/
