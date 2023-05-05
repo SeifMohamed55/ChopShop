@@ -202,11 +202,12 @@ margin-right: 20px;
   .input{
   display: inline;
   position: absolute;
+  width: max-content;
   top: 45%;
   left: 50%;
   transform: translate(-50%, -50%);
   max-width: 50rem;
-  max-height: 35rem;
+  max-height: 50rem;
 
   }
   .buttons{
@@ -216,3 +217,4 @@ margin-right: 20px;
     margin-bottom: 70px;
   }
 
+  

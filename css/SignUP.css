@@ -92,7 +92,7 @@
     left: 50%;
     transform: translate(-50%, -50%);
     max-width: 50rem;
-    max-height: 35rem;
+    max-height: 50rem;
     background-color: #f3f3f3;
     padding: 60px 50px;
     box-shadow: 0 4rem 6rem rgb(0 0 0);
