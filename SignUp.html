@@ -35,35 +35,35 @@ $user = new
         <div class="input">
           <form method="POST">
             <img src="photos/user.png" alt="Fname" width="20" height="20">
-            <input type="text" id="fname" name="fname" placeholder="First Name" required><br><br>
+            <input type="text" id="fname" name="SignUP" placeholder="First Name" required><br><br>
 
             <img src="photos/user.png" alt="Lname" width="20" height="20">
-            <input type="text" id="lname" name="lname" placeholder="Last Name" required><br><br>
+            <input type="text" id="lname" name="SignUP" placeholder="Last Name" required><br><br>
 
             <img src="photos/email.png" alt="email" width="20" height="20">
-            <input type="email" id="email" name="email" placeholder="Email" required><br><br>
+            <input type="email" id="email" name="SignUP" placeholder="Email" required><br><br>
 
             <img src="photos/password.png" alt="password" width="20" height="20">
-            <input type="password" id="password" name="password" placeholder="password" required><br><br>
+            <input type="password" id="password" name="SignUP" placeholder="password" required><br><br>
 
             <img src="photos/phone.png" alt="phone " width="20" height="20">
-            <input type="tel" id="phone" name="phone" placeholder="Phone Number" required required><br><br>
+            <input type="tel" id="phone" name="SignUP" placeholder="Phone Number" required ><br><br>
             
             <img src="photos/addresslogo.png" alt="address" width="20" height="20">
-            <input type="text" id="address" name="address" placeholder="address" required><br><br>
+            <input type="text" id="address" name="SignUP" placeholder="address" required><br><br>
 
             <img src="photos/sex.png" alt="Fname" width="20" height="20">
-            <input type="radio" id="Male" name="Sex" value="Male" required>
+            <input type="radio" id="Male" name="SignUP" value="Male" required>
             <label for="html">Male</label>
-            <input type="radio" id="css" name="Sex" value="Female">
+            <input type="radio" id="css" name="SignUP" value="Female" required>
             <label for="css">Female</label>
             <br><br>
 
             <img src="photos/cashlogo.png" alt="Fname" width="20" height="20">
 
-            <input type="radio" id="buyer" name="type" value="Buyer" required>
+            <input type="radio" id="buyer" name="SignUP" value="Buyer" required>
             <label for="html">Buyer</label>
-            <input type="radio" id="seller" name="type" value="Seller" required>
+            <input type="radio" id="seller" name="SignUP" value="Seller" required>
             <label for="css">Seller</label><br>
 
 
@@ -91,5 +91,11 @@ $user = new
     </div>
   </footer>
 </body>
-
+<script>
+function myFunction(){
+  var x = document.getElementsByTagName("SignUP");
+  if(!x.value){
+    window.alert("You must fill the required fields");
+  }
+</script>
 </html>
