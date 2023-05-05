@@ -72,10 +72,13 @@ li a:hover:not(#navitem) {
   font-family: 'Times New Roman';
 }
 
+body{
+  background-image: linear-gradient(to bottom, rgba(152, 64, 99), rgba(0, 0, 255, 0.5) ), url("backg.png"); 
+
+}
 .container{
   width: 100%;
   height: 100vh;
-  background-image: linear-gradient(to bottom, rgba(152, 64, 99), rgba(0, 0, 255, 0.5) ), url("backg.png"); 
   background-position: center;
   background-size: cover;
   position: relative;
@@ -162,11 +165,13 @@ margin-right: 20px;
   
   #about ul {
     background-color: #984063;
-    text-align: left;
+    margin: 10px;
     list-style-position: inside;
     list-style-type: none;
+    border-radius: 30px;
     padding-top: 3%;
     padding-bottom: 3%;
+    padding-left: 1%;
   }
   
   #about a {
@@ -193,14 +198,16 @@ margin-right: 20px;
   #about li:hover {
     background-color: #9c4769;
   }
+  
   .input{
-display: inline;
+  display: inline;
   position: absolute;
+  width: max-content;
   top: 45%;
   left: 50%;
   transform: translate(-50%, -50%);
   max-width: 50rem;
-  max-height: 35rem;
+  max-height: 50rem;
 
   }
   .buttons{
@@ -210,3 +217,4 @@ display: inline;
     margin-bottom: 70px;
   }
 
+  

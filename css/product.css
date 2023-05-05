@@ -94,13 +94,12 @@ li a:hover:not(#navitem) {
 
 #back {
     text-align: center;
-    padding: 1%;
     text-transform: capitalize;
     background-color: #ffb7a0;
-    border-left: solid #fb7143;
-    border-right: solid #fb7143;
-}
-
+    border-radius: 30px;
+    padding: 1%;
+    
+  }
 #back a {
     font-size: 20px;
     color: #000000;
