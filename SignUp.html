@@ -1,28 +1,16 @@
-<?php
-include_once 'Classes/Buyer.php';
-include_once 'Classes/Seller.php';
-include_once 'Classes/Database.php';
 
-$user = new 
-
-?>
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
   <meta charset="UTF-8" />
   <link rel="stylesheet" href="css/SignUP.css" />
-  <title> Signin </title>
+  <title> Sign up </title>
 </head>
 
 <body background-image: linear-gradient(to bottom, rgba(152, 64, 99), rgba(0, 0, 255, 0.5) ), url(backg.png);>
   <div id="nav">
-    <ul>
-      <li><a href="index.html" class="navitem" id="home">Home</a></li>
-      <li><a href="Categories.html" class="navitem">Categories</a></li>
-      <li><a href="MyCart.html" class="navitem">My cart</a></li>
-      <li><a href="MyProfile.html" class="navitem">Profile</a></li>
-    </ul>
+    
   </div>
   <div class="container">
 
@@ -35,49 +23,46 @@ $user = new
         <div class="input">
           <form method="POST">
             <img src="photos/user.png" alt="Fname" width="20" height="20">
-            <input type="text" id="fname" name="fname" placeholder="First Name" required><br><br>
+            <input type="text" id="fname" name="SignUP" placeholder="First Name" required><br><br>
 
             <img src="photos/user.png" alt="Lname" width="20" height="20">
-            <input type="text" id="lname" name="lname" placeholder="Last Name" required><br><br>
+            <input type="text" id="lname" name="SignUP" placeholder="Last Name" required><br><br>
 
             <img src="photos/email.png" alt="email" width="20" height="20">
-            <input type="email" id="email" name="email" placeholder="Email" required><br><br>
+            <input type="email" id="email" name="SignUP" placeholder="Email" required><br><br>
 
             <img src="photos/password.png" alt="password" width="20" height="20">
-            <input type="password" id="password" name="password" placeholder="password" required><br><br>
+            <input type="password" id="password" name="SignUP" placeholder="password" required><br><br>
 
             <img src="photos/phone.png" alt="phone " width="20" height="20">
-            <input type="tel" id="phone" name="phone" placeholder="Phone Number" required required><br><br>
+            <input type="tel" id="phone" name="SignUP" placeholder="Phone Number" required pattern="[0-9]{12}"><br><br>
             
             <img src="photos/addresslogo.png" alt="address" width="20" height="20">
-            <input type="text" id="address" name="address" placeholder="address" required><br><br>
+            <input type="text" id="address" name="SignUP" placeholder="address" required><br><br>
 
             <img src="photos/sex.png" alt="Fname" width="20" height="20">
-            <input type="radio" id="Male" name="Sex" value="Male" required>
+            <input type="radio" id="Male" name="SignUP" value="Male" required>
             <label for="html">Male</label>
-            <input type="radio" id="css" name="Sex" value="Female">
+            <input type="radio" id="css" name="SignUP" value="Female" required>
             <label for="css">Female</label>
             <br><br>
 
             <img src="photos/cashlogo.png" alt="Fname" width="20" height="20">
 
-            <input type="radio" id="buyer" name="type" value="Buyer" required>
+            <input type="radio" id="buyer" name="ss" value="Buyer" required>
             <label for="html">Buyer</label>
-            <input type="radio" id="seller" name="type" value="Seller" required>
+            <input type="radio" id="seller" name="ss" value="Seller" required>
             <label for="css">Seller</label><br>
-
-
+            <br>
+            <button class="btn2"><a href="">
+              <h4>SignUp</h4>
+            </a> </button>
+          <button class="btn1">
+            <h4><a href="index.html"> Log in</a></h4>
+          </button>
           </form>
         </div>
-        <br><br>
       </form>
-      <button class="btn2"><a href="">
-          <h4>SignUp</h4>
-        </a> </button>
-      <button class="btn1">
-        <h4><a href="Signin.html"> Log in</a></h4>
-      </button>
-
     </div>
   </div>
   <footer>
@@ -91,5 +76,6 @@ $user = new
     </div>
   </footer>
 </body>
-
+<script src="for_abdo_only.js"></script>
 </html>
+

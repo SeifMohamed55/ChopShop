@@ -1,0 +1,74 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="stylesheet" href="../css/addadmin.css" />
+  <title> Add Admin</title>
+</head>
+
+<body background-image: linear-gradient(to bottom, rgba(152, 64, 99), rgba(0, 0, 255, 0.5) ), url(backg.png);>
+  <div id="nav">
+    <ul>
+        <li><a href="reported.html" class="navitem" id="reported">Reported users</a></li>
+        <li><a href="banned.html" class="navitem">Banned users</a></li>
+        <li><a href="rmvproduct.html" class="navitem">Remove a product</a></li>
+        <li><a href="addadmin.html" class="navitem">Add admin</a></li>
+        <li><a href="adminprofile.html" class="navitem">Profile</a></li>
+        <li style="float: right;"><a href="../index.html" class="navitem" >Logout</a></li>
+    </ul>
+  </div>
+  <div class="container">
+
+    <div class="field">
+      <div class="text">
+        <h1>Add Admin</h1>
+        <h3>create administrator account</h3>
+      </div> <br>
+      <form action="">
+        <div class="input">
+          <form method="POST">
+            <img src="../photos/user.png" alt="Fname" width="20" height="20">
+            <input type="text" id="fname" name="fname" placeholder="First Name" required><br><br>
+
+            <img src="../photos/user.png" alt="Lname" width="20" height="20">
+            <input type="text" id="lname" name="lname" placeholder="Last Name" required><br><br>
+
+            <img src="../photos/email.png" alt="email" width="20" height="20">
+            <input type="email" id="email" name="email" placeholder="Email" required><br><br>
+
+            <img src="../photos/password.png" alt="password" width="20" height="20">
+            <input type="password" id="password" name="password" placeholder="password" required><br><br>
+
+            <img src="../photos/phone.png" alt="phone " width="20" height="20">
+            <input type="tel" id="phone" name="phone" placeholder="Phone Number" required required><br><br>
+            
+            <img src="../photos/addresslogo.png" alt="address" width="20" height="20">
+            <input type="text" id="address" name="address" placeholder="address" required><br><br>
+
+            <img src="../photos/sex.png" alt="Fname" width="20" height="20">
+            <input type="radio" id="Male" name="Sex" value="Male" required>
+            <label for="html">Male</label>
+            <input type="radio" id="css" name="Sex" value="Female">
+            <label for="css">Female</label>
+            <br><br><br>
+            <button class="btn2" style="position: center;"><a href="">
+                <h4>Add</h4>
+              </a></button>
+
+
+          </form>
+        </div>
+        <br><br>
+      </form>
+
+      
+
+    </div>
+  </div>
+  
+
+</body>
+
+</html>
