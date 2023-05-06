@@ -15,7 +15,7 @@ body {
     text-transform: capitalize;
     background-color: #ffb7a0;
     border-left: solid #fb7143;
-  }
+}
 
 
 
@@ -99,8 +99,8 @@ div.desc {
     background-color: #ffb7a0;
     border-radius: 30px;
     padding: 1%;
-    
-  }
+
+}
 
 #back a {
     font-size: 20px;
@@ -155,4 +155,3 @@ div.desc {
 #about li:hover {
     background-color: #9c4769;
 }
-

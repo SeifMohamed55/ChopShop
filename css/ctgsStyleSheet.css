@@ -137,8 +137,8 @@ li a:hover:not(#navitem) {
     background-color: #ffb7a0;
     border-radius: 30px;
     padding: 1%;
-  }
-  
+}
+
 #back a {
     font-size: 20px;
     color: #000000;
@@ -196,5 +196,3 @@ li a:hover:not(#navitem) {
 #about li:hover {
     background-color: #9c4769;
 }
-
-

@@ -16,7 +16,7 @@ body {
     text-transform: capitalize;
     background-color: #ffb7a0;
     border-left: solid #fb7143;
-  }
+}
 
 
 
@@ -67,14 +67,14 @@ li a:hover:not(#navitem) {
 
 
 
-#infobox{
+#infobox {
     background: #984063;
     padding: 1%;
     border-radius: 30px;
 }
 
-.profile{
-    color:whitesmoke;
+.profile {
+    color: whitesmoke;
     font-size: x-large;
 }
 
@@ -86,8 +86,8 @@ li a:hover:not(#navitem) {
     background-color: #ffb7a0;
     border-radius: 30px;
     padding: 1%;
-    
-  }
+
+}
 
 #back a {
     font-size: 20px;
@@ -143,10 +143,10 @@ li a:hover:not(#navitem) {
     background-color: #9c4769;
 }
 
-#prsnlinfo{
+#prsnlinfo {
     font-family: 'Times New Roman';
     color: #000000;
-    -webkit-text-stroke: black , 5px;
+    -webkit-text-stroke: black, 5px;
     font-size: larger;
     text-align: left;
     background-color: #ffb7a0;
