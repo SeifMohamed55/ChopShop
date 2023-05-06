@@ -74,7 +74,7 @@
   }
   
   body{
-    background-image: linear-gradient(to bottom, rgba(152, 64, 99), rgba(0, 0, 255, 0.5) ), url("backg.png"); 
+    background-image: linear-gradient(to bottom, rgba(152, 64, 99), rgba(0, 0, 255, 0.5) ), url("../photos/backg.png"); 
 
   }
   .container{
