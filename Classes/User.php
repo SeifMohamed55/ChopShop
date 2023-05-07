@@ -11,9 +11,7 @@ abstract class User implements Notifications{
     protected string $phoneNum;
     protected  $gender;
     protected  $followedCategories = array();
-    protected int $noOfCateg = 0;
-    protected Database $database = new Database();
-    
+    protected int $noOfCateg = 0;    
     function getID(){
         return $this->ID;
     }
@@ -48,7 +46,8 @@ abstract class User implements Notifications{
         return $this->followedCategories;
     }
     function setEmail($email){
-        $x = $this->database->execute("update [user] set email = ?",array($email));
+        $database = new Database();
+        $x = $database->execute("update [user] set email = ?",array($email));
         if ($x){
             $this->email = $email;
             return true;
@@ -56,7 +55,8 @@ abstract class User implements Notifications{
         return false;
     }
     function setFname($fname){
-        $x = $this->database->execute("update [user] set fname = ?",array($fname));
+        $database = new Database();
+        $x = $database->execute("update [user] set fname = ?",array($fname));
         if ($x){
             $this->fname = $fname;
             return true;
@@ -64,7 +64,8 @@ abstract class User implements Notifications{
         return false;
     }
     function setLname($lname){
-        $x = $this->database->execute("update [user] set lname = ?",array($lname));
+        $database = new Database();
+        $x = $database->execute("update [user] set lname = ?",array($lname));
         if ($x){
             $this->lname = $lname;
             return true;
@@ -72,7 +73,8 @@ abstract class User implements Notifications{
         return false;
     }
     function setPhoneNumber($phoneNum){
-        $x = $this->database->execute("update [user] set phoneNum = ?",array($phoneNum));
+        $database = new Database();
+        $x = $database->execute("update [user] set phoneNum = ?",array($phoneNum));
         if ($x){
             $this->phoneNum = $phoneNum;
             return true;
@@ -81,7 +83,8 @@ abstract class User implements Notifications{
     }
     function setPassword($oldPassword,$newPassword){
         if($oldPassword == $this->getPassword()){
-            $x = $this->database->execute("update [user] set [password] = ?", array($newPassword));
+            $database = new Database();
+            $x = $database->execute("update [user] set [password] = ?", array($newPassword));
             if ($x){
                 $this->password = $newPassword;
                 return true;
@@ -89,10 +92,11 @@ abstract class User implements Notifications{
         }
         return false;
     }
-    function reportUser_email($email , $description){
-        $stmt = $this->database->execute("select ID from [user] where email = ?",array($email));
+    function reportUser_email($email, $description){
+        $database = new Database();
+        $stmt = $database->execute("select ID from [user] where email = ?",array($email));
         $reportedID = sqlsrv_get_field( $stmt, 0);
-        $x = $this->database->execute("insert into report_user values(?,?,?)", array($this->getID(), $reportedID, $description));
+        $x = $database->execute("insert into report_user values(?,?,?)", array($this->getID(), $reportedID, $description));
         if ($x){
             return true;
         }
@@ -177,13 +181,15 @@ abstract class User implements Notifications{
         }
         return false;
     }   
-    function register(): bool{
-        $stmt = $this->database->execute("insert into 
+    static function register($user): bool{
+        $database = new Database();
+        $stmt = $database->execute("insert into 
         [user](email , password, fname, lname, ban_state, user_type, phone_num, gender)
-         VALUES(?, ?, ?, ?, ?, ?, ?, ?)", array($this->email, $this->password, $this->fname,
-          $this->lname, 0, UserType::SELLER, $this->phoneNum, $this->gender));
-        if($stmt)
-            return true;
-        return false;
+         VALUES(?, ?, ?, ?, ?, ?, ?, ?)", array($user->email, $user->password, $user->fname,
+          $user->lname, 0, $user->userType, $user->phoneNum, $user->gender));
+          $rows_affected = sqlsrv_rows_affected($stmt);
+          if ($rows_affected == 0)
+              return false;
+          return true;
     }
 }

@@ -2,7 +2,6 @@
 class Seller extends User{
     private $onSaleProduct = array();
     private $noOfProd = 0;
-    protected Database $database = new Database();
 
     function __construct($ID, $email, $password, $fname, $lname, $banState, $userType, $phoneNum, $gender, $followedCategories, $onSaleProduct){
         $this->ID = $ID;
@@ -19,30 +18,38 @@ class Seller extends User{
         $this->onSaleProduct = $onSaleProduct;
         $this->onSaleProduct = count($onSaleProduct);
     }
-    
-    
-    function followCategory($category){
-        $this->noOfCateg++;
-        $this->followedCategories[$this->noOfCateg - 1] = $category;
+    function getOnSaleProduct(){
+        return $this->onSaleProduct;
     }
-     function getNotified(){
-        //still
-    }
-    function addProduct(Product $product){
-        $sql = "INSERT INTO product (barcode, prod_name, add_date, price, quantity, descripion, auction_duration, seller_ID) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
-$params = array($product);
-
-$stmt = sqlsrv_query( $conn, $sql, $params);
-        $this->noOfProd++;
-        $this->onSaleProduct[$this->noOfProd - 1] = $product;
-    }
-    function deleteProduct_prod(Product $product ){
-        $x = $this->database->execute("delete from [product] where barcode = ?", array($product));
+    function addProduct(Product $prod){
+        $database = new Database();
+        $x = $database->execute("Insert into product values(?,?,?,?,?,?,?,?)",
+         array($prod->getBarcode(), $prod->getProductName(),$prod->getAddDate(),$prod->getPrice(),
+         $prod->getQuantity(),$prod->getDescription(),$prod->getAuctionDuration(),$prod->getSellerID()));
+        if ($x){
+            $this->noOfProd++;
+            $this->onSaleProduct[$this->noOfProd - 1] = $prod->getBarcode();
+            return true;
+        }
+        return false;
     }
     function deleteProduct_barcode($barcode){
-        $x = $this->database->execute("update [product] delete barcode = ?", array($barcode));
+        $database = new Database();
+        $stmt = $database->execute("select seller_ID from product where barcode = ?",array($barcode));
+        sqlsrv_fetch( $stmt );
+        $seller_ID = sqlsrv_get_field( $stmt, 0);
+        if ($seller_ID != $this->getID())
+            return false;
+        $stmt = $database->execute("delete from product where barcode = ?",array($barcode));
+        $rows_affected = sqlsrv_rows_affected($stmt);
+        if ($rows_affected == 0)
+            return false;
+        return true;
     }
     function scanBarcode($barcode){
-
+        
+    }
+    function getNotified(){
+        //still
     }
 }
