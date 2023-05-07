@@ -5,7 +5,6 @@
         private $productBarcode;
         private $feedbackRating;
         private $feedbackDescription;
-        protected Database $database = new Database();
 
 
         public function __construct($userID, $productBarcode, $feedbackRating, $feedbackDescription){

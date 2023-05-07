@@ -29,4 +29,4 @@ $cat = array(Categories::CLOTHING,Categories::ELCTRONICS,Categories::KITCHEN,Cat
  echo $x->getBarcode() . " <br>" . $x->getAddDate() . "<br>" . $x->getDescription() . "<br>" . $x->getAuctionDuration() . "<br>";
 echo $auc;
 echo date("Y-m-d", $auc) . "<br>" . date("Y-m-d",strtotime("+6 months"));
-Database::connect();
+User::login("eemolds","lololo");

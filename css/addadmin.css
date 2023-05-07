@@ -203,3 +203,7 @@ h5 {
 #about li:hover {
   background-color: #9c4769;
 }
+
+footer {
+  margin-top: 75%;
+}

@@ -150,6 +150,10 @@ li a:hover:not(#navitem) {
     font-size: larger;
     text-align: left;
     background-color: #ffb7a0;
-    border-left: solid #fb7143;
     padding: 1%;
+    border-radius: 10px;
+}
+
+footer {
+    margin-top: 5%;
 }
