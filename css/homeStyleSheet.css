@@ -54,7 +54,8 @@ li a:hover:not(#navitem) {
   font-family: 'Times New Roman';
   text-transform: capitalize;
   background-color: #ffb7a0;
-  border-left: solid #fb7143;
+  border-radius: 10px;
+
 }
 
 div.gallery {
@@ -146,4 +147,8 @@ div.desc {
 
 #about li:hover {
   background-color: #9c4769;
+}
+
+footer {
+  margin-top: 120%;
 }

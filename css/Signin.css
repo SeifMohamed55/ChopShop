@@ -88,20 +88,6 @@ body {
 
 }
 
-/*
-  .field{
-    display: inline;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    max-width: 25rem;
-    max-height: 25rem;
-    background-color: #f3f3f3;
-    padding: 5rem 6rem;
-    box-shadow: 0 4rem 6rem rgb(131, 32, 48);
-    
-  }*/
 a {
   text-decoration: none;
   color: rgb(0, 0, 0);
