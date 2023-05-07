@@ -192,4 +192,14 @@ abstract class User implements Notifications{
               return false;
           return true;
     }
+    static function getIDFromEmail($email){
+        $database = new Database();
+        $stmt = $database->execute("SELECT ID from [user] where email = ?", array($email));
+        if ($stmt){
+            $row = sqlsrv_fetch_array($stmt,SQLSRV_FETCH_ASSOC);
+            $ID = $row['ID'];
+            return $ID;
+        }
+        return false;
+    }
 }
