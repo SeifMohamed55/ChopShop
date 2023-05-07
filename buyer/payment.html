@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -16,13 +17,19 @@
         </ul>
     </div>
 </head>
+
 <body>
     <br> <br> <br>
     <div id="form">
-        <form action="">
-            <label for="paymethod" style="margin-right: 5px ; margin-top: 2px;"><img src="../photos/cashlogo.png" alt="" width="20px" height="20px"></label>
-            <input type="text" name="paymethod" placeholder="Cash / another way">
-        </form>
+        <form action="/action_page.php">
+            <label for="cars">Choose a payment method:</label>
+            <select id="cars" name="cars">
+              <option value="cash">Cash</option>
+              <option value="Credit">Credit card</option>
+              <option value="Other">Other</option>
+            </select>
+            <input type="submit">
+          </form>
     </div>
 </body>
 <footer>
@@ -38,4 +45,5 @@
         </ul>
     </div>
 </footer>
+
 </html>
