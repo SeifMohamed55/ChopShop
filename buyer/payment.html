@@ -22,8 +22,11 @@
     <br> <br> <br>
     <div id="form">
         <form action="/action_page.php">
+            <label for="">Payment amount</label>
+            <input type="number">
+            <br> <br>
             <label for="cars">Choose a payment method:</label>
-            <select id="cars" name="cars">
+            <select id="cars" name="cars" required>
               <option value="cash">Cash</option>
               <option value="Credit">Credit card</option>
               <option value="Other">Other</option>
