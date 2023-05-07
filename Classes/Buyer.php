@@ -38,17 +38,30 @@ class Buyer extends User{
         return $this->wishlist;
     }
     function followCategory($category){
-       $this->noOfCateg++;
-       $this->followedCategories[$this->noOfCateg - 1] = $category;
+        $database = new Database();
+        $x = $database->execute("Insert into followed_categories values(?,?)", array($this->getID(), $category));
+        if ($x){
+            $this->noOfCateg++;
+            $this->followedCategories[$this->noOfCateg - 1] = $category;
+            return true;
+        }
+        return false;
     }
-    function addToWishlist(Product $prod){
-        $this->noOfWishlist++;
-        $this->wishlist[$this->noOfWishlist - 1] = $prod;
+    function addToWishlist($prod_barcode){
+        $database = new Database();
+        $x = $database->execute("Insert into user_wishlists values(?,?)", array($this->getID(), $prod_barcode));
+        if ($x){
+            $this->noOfWishlist++;
+            $this->wishlist[$this->noOfWishlist - 1] = $prod_barcode;
+            return true;
+        }
+        return false;
     }
-    function addToCart(Product $prod){
+    
+   /*  function addToCart($prod){
         $this->noOfProd++;
         $this->productCart[$this->noOfProd - 1] = $prod;
-    }
+    } */
 
     
     function getNotified(){
