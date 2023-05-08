@@ -113,3 +113,68 @@ li a:hover:not(#navitem) {
 footer {
   margin-top: 75%;
 }
+
+
+#selling {
+  display: inline;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  max-width: 50rem;
+  max-height: 50rem;
+  background-color: #ffb7a0;
+  padding: 60px 50px;
+  box-shadow: 0 4rem 6rem rgb(0 0 0);
+  border-radius: 50px;
+  height: max-content;
+  width: 40%;
+  text-align: center;
+}
+
+.text {
+  border-radius: 8px;
+  border: solid rgb(0, 0, 0) 2px;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+table,
+tr,
+th,
+td {
+  border: 1px solid black;
+  font-size: large;
+  height: max-content;
+  border-collapse: collapse;
+  background-color: #ffb7a0;
+}
+
+table{
+  margin-top: 20px;
+}
+
+
+th,
+td {
+  padding: 15px;
+}
+
+#tbname {
+  height: max-content;
+  width: 240px;
+}
+
+#tbmail{
+  height: max-content;
+  width: 300px;
+}
+
+#tbdes{
+  height: max-content;
+  width: 360px;
+}

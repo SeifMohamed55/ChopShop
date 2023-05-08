@@ -14,7 +14,7 @@
         <div id="nav">
             <ul>
                 <li><a href="reported.html" class="navitem" id="home">Reported users</a></li>
-                <li><a href="banned.html" class="navitem">Banned users</a></li>
+                <li><a href="banned.html" class="navitem">Ban/Unban users</a></li>
                 <li><a href="rmvproduct.html" class="navitem">Remove a product</a></li>
                 <li><a href="addadmin.html" class="navitem">Add admin</a></li>
                 <li><a href="adminprofile.html" class="navitem">Profile</a></li>
@@ -22,6 +22,19 @@
             </ul>
         </div>
     </header>
+    <div id="selling">
+        <form action="">
+            <p>Remove a product:</p><br>
+
+            <label for="pname"><img src="../photos/icons8-product-24.png" alt="" width="20px" height="20px" style="margin-top: 2px;"></label>   
+            <input type="text" required class="text" placeholder="          Product_name" name="pname" style="height: 20px;">
+            <br> <br>
+            <label for="pid"><img src="../photos/user.png" alt="" width="20px" height="20px"></label>
+            <input type="number" required class="text" placeholder="            Product_id" name="pid" style="height: 20px;">
+            <br> <br>
+            <input type="submit" class="text" value="Remove" style="width: max-content; padding: 7px; background-color: #984063;" >
+        </form>
+    </div>
     <footer>
         <div id="back">
             <a href="#home">Back Top</a>
