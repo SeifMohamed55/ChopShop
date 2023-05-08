@@ -23,18 +23,22 @@
     <div id="form">
         <form action="">
             <center>
-                <label for="cars">Choose a payment method:</label>
-                <select id="cars" name="cars" required>
-                    <option value="cash">Cash</option>
-                    <option value="Credit">Credit card</option>
+                <label for="change_chart">Choose a payment method:</label>
+                <select id="change_chart" name="change_chart" onchange="myFunction(event)" required>
+                    <option value="1" selected>Select one</option>
+                    <option value="2" id="cash">Cash</option>
+                    <option value="3" id="cd">Credit card</option>
                 </select>
 
                 <br><br>
-
-                <label for="">Quantity:</label>
-                <input type="number" style="width: 50px;" required>
-                <label for="">Amount:</label>
-                <input type="number" style="width: 80px;" required> $
+                <div id="q">
+                    <label for="Quantity">Quantity:</label>
+                <input type="number" style="width: 40px;" required name="Quantity">
+                </div>
+                <div id="amount">
+                <label for="amount">Amount:</label>
+                <input type="number" style="width: 80px;" required  name="amount">
+                </div>
             </center>
             <br>
             <div id="creditcard" style="margin-left: 28%;">
@@ -58,8 +62,8 @@
                 </div>
                 <br><br>
                 
-                <input type="submit" onclick="" style="width: 15%; margin-left: 25% ;">
             </div>
+            <input type="submit" onclick="" style="width: 15%; margin-left: 45% ;" id="submit">
         </form>
     </div>
 
@@ -77,5 +81,5 @@
         </ul>
     </div>
 </footer>
-
+<script src="../for_abdo_only.js"></script>
 </html>

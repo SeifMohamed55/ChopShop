@@ -127,11 +127,21 @@ footer {
   height: max-content;
   width: 40%;
 }
-
 * {
   margin: 0;
   padding: 0;
   font-family: 'Segoe UI';
   box-sizing: border-box;
 }
-
+#amount {
+  display: none;
+}
+#creditcard {
+  display: none;
+}
+#q {
+  display: none;
+}
+#submit {
+  display: none;
+}
