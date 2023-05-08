@@ -4,8 +4,7 @@ class Admin extends User{
     private $bannedUsers = array();
     private $reportedUsers = array();
 
-    function __construct($ID, $email, $gender, $password, $fname, $lname, $banState, $phoneNum, $userType, $bannedUsers, $reportedUsers){
-        $this->ID = $ID;
+    function __construct($email, $gender, $password, $fname, $lname, $banState, $phoneNum, $userType, $address, $bannedUsers, $reportedUsers){
         $this->email = $email;
         $this->password = $password;
         $this->fname = $fname;
@@ -16,6 +15,7 @@ class Admin extends User{
         $this->phoneNum = $phoneNum;
         $this->bannedUsers = $bannedUsers;
         $this->reportedUsers = $reportedUsers;
+        $this->address = $address;
     }
   
     function getBannedUsers(){
@@ -23,6 +23,9 @@ class Admin extends User{
     }
     function getReportedUsers(){
         return $this->reportedUsers;
+    }
+    function getID(){
+        return ($this->ID = User::getIDFromEmail($this->email));
     }
     function banUser_email(String $email){
         $database = new Database();

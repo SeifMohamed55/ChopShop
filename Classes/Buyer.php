@@ -1,6 +1,7 @@
 <?php
 //modify getters and setters with database
 include_once "Classes/Notifications.php";
+include_once "Classes/User.php";
 class Buyer extends User{
     private  $followedSellers = array(); //array of users
     private  $productCart = array(); //array of products
@@ -8,8 +9,7 @@ class Buyer extends User{
     private int $noOfWishlist; // no of products in wishlist
     private int $noOfProd;  // no of products in cart
     private int $noFollowedSellers; // no of followed sellers
-    function __construct($ID, $email, $gender, $password, $fname, $lname, $banState, $userType, $phoneNum, $followedCategories, $followedSellers, $productCart, $wishlist ){
-        $this->ID = $ID;
+    function __construct($email, $gender, $password, $fname, $lname, $banState, $userType, $phoneNum, $address, $followedCategories, $followedSellers, $productCart, $wishlist ){
         $this->email = $email;
         $this->password = substr(password_hash($password, PASSWORD_DEFAULT), 0, 70);
         $this->fname = $fname;
@@ -26,6 +26,9 @@ class Buyer extends User{
         $this->noFollowedSellers = count($this->followedSellers);
         $this->noOfProd = count($this->productCart);
         $this->gender = $gender;  
+        $this->address = $address;
+
+
     }
     
      function getFollowedCategories(){
@@ -36,6 +39,9 @@ class Buyer extends User{
     }
     function getWishlist(){
         return $this->wishlist;
+    }
+    function getID(){
+        return ($this->ID = User::getIDFromEmail($this->email));    
     }
     function followCategory($category){
         $database = new Database();
