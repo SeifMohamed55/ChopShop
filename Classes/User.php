@@ -11,7 +11,8 @@ abstract class User implements Notifications{
     protected string $phoneNum;
     protected  $gender;
     protected  $followedCategories = array();
-    protected int $noOfCateg = 0;    
+    protected int $noOfCateg = 0;  
+    protected $address;
     function getID(){
         return $this->ID;
     }
@@ -128,7 +129,7 @@ abstract class User implements Notifications{
                         $reportedUsers[$j] = array($row['email'], $row['fname'], $row['lname'] , $row['description'] );
                         $j++;
                     }
-                    $user = new Admin($info[0],$info[1],$info[8],$info[2],$info[3],$info[4],$info[5],$info[6],$info[7], $bannedUsers, $reportedUsers);
+                    $user = new Admin($info[1],$info[8],$info[2],$info[3],$info[4],$info[5],$info[6],$info[7], $info[9], $bannedUsers, $reportedUsers);
                     return $user;
                 }
                if ($type == UserType::BUYER){
@@ -154,7 +155,7 @@ abstract class User implements Notifications{
                         $wishlist[$j] = $row['prod_barcode'];
                         $j++;
                     }
-                    $user = new Buyer($info[0],$info[1],$info[8],$info[2],$info[3],$info[4],$info[5],$info[6],$info[7], $followedCategories, $followedSellers , null, $wishlist );
+                    $user = new Buyer($info[1],$info[8],$info[2],$info[3],$info[4],$info[5],$info[6],$info[7], $info[9],$followedCategories, $followedSellers , null, $wishlist );
                     return $user;
                 }
                
@@ -174,7 +175,7 @@ abstract class User implements Notifications{
                         $j++;
                     }
 
-                    $user = new Seller($info[0],$info[1],$info[8],$info[2],$info[3],$info[4],$info[5],$info[6],$info[7], $followedCategories, $onSaleProduct );
+                    $user = new Seller($info[1],$info[8],$info[2],$info[3],$info[4],$info[5],$info[6],$info[7],$info[9], $followedCategories, $onSaleProduct);
                     return $user;
                }
             }
@@ -183,10 +184,15 @@ abstract class User implements Notifications{
     }   
     static function register($user): bool{
         $database = new Database();
-        $stmt = $database->execute("insert into 
-        [user](email , password, fname, lname, ban_state, user_type, phone_num, gender)
-         VALUES(?, ?, ?, ?, ?, ?, ?, ?)", array($user->email, $user->password, $user->fname,
-          $user->lname, 0, $user->userType, $user->phoneNum, $user->gender));
+        $stmt = $database->execute("SELECT email from [user]",null);
+        while( $row = sqlsrv_fetch_array( $stmt, SQLSRV_FETCH_ASSOC) ) {
+            if ($row['email'] == $user->email)
+                return false;
+        }
+        $stmt = $database->execute("INSERT into 
+        [user](email , [password], fname, lname, ban_state, user_type, phone_num, gender, [address])
+         VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?)", array($user->email, $user->password, $user->fname,
+          $user->lname, 0, $user->userType, $user->phoneNum, $user->gender, $user->address));
           $rows_affected = sqlsrv_rows_affected($stmt);
           if ($rows_affected == 0)
               return false;
@@ -195,11 +201,8 @@ abstract class User implements Notifications{
     static function getIDFromEmail($email){
         $database = new Database();
         $stmt = $database->execute("SELECT ID from [user] where email = ?", array($email));
-        if ($stmt){
-            $row = sqlsrv_fetch_array($stmt,SQLSRV_FETCH_ASSOC);
-            $ID = $row['ID'];
-            return $ID;
-        }
-        return false;
+        $row = sqlsrv_fetch_array($stmt);
+        $ID = $row[0];
+        return $ID;
     }
 }

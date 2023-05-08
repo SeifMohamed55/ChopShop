@@ -32,9 +32,6 @@ class Database {
     }
   }
   
-  
-?>
-
 //to insert
 /*
 $sql = "INSERT INTO Table_1 (id, data) VALUES (?, ?)";
@@ -80,3 +77,5 @@ echo "$name: ";
 
 $comment = sqlsrv_get_field( $stmt, 1);
 echo $comment;*/
+?>
+

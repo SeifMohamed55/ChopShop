@@ -3,8 +3,7 @@ class Seller extends User{
     private $onSaleProduct = array();
     private $noOfProd = 0;
 
-    function __construct($ID, $email, $password, $fname, $lname, $banState, $userType, $phoneNum, $gender, $followedCategories, $onSaleProduct){
-        $this->ID = $ID;
+    function __construct($email, $password, $fname, $lname, $banState, $userType, $phoneNum, $gender, $address, $followedCategories, $onSaleProduct){
         $this->email = $email;
         $this->password = substr(password_hash($password, PASSWORD_DEFAULT), 0, 70);
         $this->fname = $fname;
@@ -17,9 +16,14 @@ class Seller extends User{
         $this->noOfCateg = count($followedCategories);
         $this->onSaleProduct = $onSaleProduct;
         $this->onSaleProduct = count($onSaleProduct);
+        $this->address = $address;
+
     }
     function getOnSaleProduct(){
         return $this->onSaleProduct;
+    }
+    function getID(){
+        return ($this->ID = User::getIDFromEmail($this->email));
     }
     function addProduct(Product $prod){
         $database = new Database();
