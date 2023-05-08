@@ -14,7 +14,9 @@ body {
   overflow: hidden;
   list-style-type: none;
   position: sticky;
+  border-radius: 25px;
   top: 0;
+  margin: 15px;
 }
 
 #nav li {

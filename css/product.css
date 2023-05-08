@@ -1,19 +1,126 @@
-body {
+:root{
+    --primary-color:#41436A ;
+    --secondary-color:#984063;
+}
+body{
     background-color: #41436A;
 }
+*{
+box-sizing: border-box;
+font-family: 'Source Sans Pro' ,sans-serif;
+line-height: 1;
+padding: 0;
+margin: 0;
+}
 
+.container{
+background-color: var(--primary-color);
+min-height: 100vh;
+display: flex;
+justify-content: center;
+align-items: center;
+}
+.box{
+    background-color:#ffb7a0;
+    border-radius: 10px;
+    box-shadow: 5px 5px 10px 1px black;
+    padding: 45px;
+    margin: 15px 0;
+    width: 800px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: auto 1fr;
+    grid-template-areas: 
+    "all-images basicinfo"
+    "all-images description"    ;
+     grid-gap: 35px;
+}
+
+.box .basicinfo{
+    grid-area:basicinfo;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+ }
+ .box .basicinfo span{
+ font-weight:800 ;
+ font-size: 25px;
+ }
+ .box .basicinfo .options a{
+    color: white;
+    background-color: var(--secondary-color);
+    display: inline-block; padding: 10px 15px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 12px;
+    border-radius:5px ;
+
+ }
+ .box .basicinfo .options a:hover{
+    background-color: var(--tertiary-color);
+
+ }
+ .box .description{
+    grid-area: description;
+    margin-top: 0;
+ }
+
+ .box .description p{
+
+color: var(--gray-color);
+font-size: 14px;
+line-height: 20px;
+}
+.box .all-images{
+    grid-area: all-images;
+    display: grid;
+    grid-template-columns: repeat(3,auto);
+    grid-template-rows: auto 1fr;
+    grid-template-areas: 
+    "active active active" /* first row : 3columns */
+    "area area area"  /* second row : 3columns */;
+  grid-gap: 5px;
+}
+
+.active{
+grid-area: active/active/active ;
+display:flex;
+}
+
+.box .all-images .image img{
+width: 100%;
+display: grid;
+border-radius: 10px;
+}
+
+
+.box .all-images .image:hover{
+opacity: 0.95;
+cursor: pointer;
+}
+
+#about{
+    margin-top: 10px;
+}
+.features{
+    list-style: none;
+    margin-top: 10px;
+    margin-bottom: 5px;
+}
 #nav ul {
     text-align: left;
     background-color: #984063;
     padding: 0;
-    margin: 0;
+    margin: 5px;
+    margin-top: 10px;
     overflow: hidden;
     border-radius: 30px;
     list-style-type: none;
-    margin-bottom: 25px;
-}
-
-#nav li {
+    position: sticky;
+    top: 0;
+  }
+  
+  #nav li {
     float: left;
     padding: 40px;
     display: block;
@@ -21,144 +128,26 @@ body {
     padding: 14px 16px;
     text-decoration: none;
     ;
-}
-
-#nav li a {
+  }
+  
+  #nav li a {
     font-family: 'Times New Roman', Times, serif;
     color: #FE9677;
     text-decoration: none;
     padding: 20px;
     font-style: none;
     display: inline;
-}
-
-#navitem {
+  }
+  
+  #navitem {
     background-color: #905d71;
-}
-
-li a:hover:not(#navitem) {
+  }
+  
+  li a:hover:not(#navitem) {
     background-color: #984063;
-}
-
-#nav li a:hover {
+  }
+  
+  #nav li a:hover {
     background-color: #9c4769;
     transition: 0.2ms;
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-#back {
-    text-align: center;
-    text-transform: capitalize;
-    background-color: #ffb7a0;
-    border-radius: 30px;
-    padding: 1%;
-
-}
-
-#back a {
-    font-size: 20px;
-    color: #000000;
-    padding: 1%;
-    font-style: italic;
-    font-family: 'Times New Roman';
-    text-decoration: none;
-}
-
-#back a:hover {
-    font-size: 21px;
-
-    font-family: 'Times New Roman';
-}
-
-
-
-
-
-
-
-
-#about ul {
-    background-color: #984063;
-    text-align: left;
-    list-style-position: inside;
-    list-style-type: none;
-    border-radius: 30px;
-    padding-top: 3%;
-    padding-bottom: 3%;
-}
-
-#about a {
-    text-decoration: none;
-    color: #000000;
-}
-
-
-#Y {
-    list-style-image: url("../photos/iconyoutube.png");
-}
-
-#F {
-    list-style-image: url("../photos/iconfacebook.png");
-}
-
-#I {
-    list-style-image: url("../photos/iconinstagram.png");
-}
-
-#T {
-    list-style-image: url("../photos/icontwitter.png");
-}
-
-#about li:hover {
-    background-color: #9c4769;
-}
-
-footer {
-    margin-top: 50%;
-}
+  }
