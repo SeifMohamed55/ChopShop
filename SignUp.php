@@ -1,4 +1,5 @@
 <?php
+session_start();
 include_once 'Classes/Buyer.php';
 include_once 'Classes/Categories.php';
 include_once 'Classes/Database.php';
@@ -16,21 +17,24 @@ include_once 'Classes/UserType.php';
 2- check $_POST['gender']
 */
 $regmsg = "";
-$_SESSION['regmsg'] = $regmsg;
 if ($_SERVER['REQUEST_METHOD'] == "POST"){
     if ($_POST['userType'] == "Seller"){
       $user = new Seller($_POST['email'], $_POST['password'], $_POST['fname'],
-       $_POST['lname'],0,UserType::SELLER,$_POST['phoneNum'],$_POST['gender'],array(), array()); 
+       $_POST['lname'],0,UserType::SELLER,$_POST['phoneNum'],$_POST['gender'],$_POST['address'],array(), array()); 
     }
     else if ($_POST['userType'] == "Buyer"){
       $user = new Buyer($_POST['email'],$_POST['gender'],$_POST['password'],
-        $_POST['fname'],$_POST['lname'],0,UserType::BUYER,$_POST['phoneNum'],array(),array(),array(),array());
+        $_POST['fname'],$_POST['lname'],0,UserType::BUYER,$_POST['phoneNum'], $_POST['address'],array(),array(),array(),array());
     }
    if (User::register($user)){
     $regmsg = "User registered successfully";
    }
-   $regmsg = "Something went wrong or email already in use";
+   else{
+    $regmsg = "Something went wrong or email already in use";
+   }
+  
   }
+  $_SESSION['regmsg'] = $regmsg;
   ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -52,7 +56,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST"){
         <h1>Sign UP</h1>
         <h3>Create an Account Now !</h3>
       </div> <br>
-      <form action="" method="post">
+      <form action="" method="post" onsubmit="return alert('<?php  echo $_SESSION['regmsg']; ?>')">
         <div class="input">
           <img src="photos/user.png" alt="Fname" width="20" height="20">
           <input type="text" id="fname" name="fname" placeholder="First Name" required><br><br>
@@ -92,7 +96,6 @@ if ($_SERVER['REQUEST_METHOD'] == "POST"){
   </div>
   </div>
 </body>
-<script>alert(<?php echo $regmsg ?>); </script>
 <script src="for_abdo_only.js"></script>
 </html>
 

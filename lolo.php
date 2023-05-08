@@ -18,17 +18,6 @@ $cat = array(Categories::CLOTHING,Categories::ELCTRONICS,Categories::KITCHEN,Cat
 echo $auc;
 echo date("Y-m-d", $auc) . "<br>" . date("Y-m-d",strtotime("+6 months"));
 
-$serverName = "localhost";  
-$connectionInfo = array(  "Database"=>"Shop", "UID"=>"Admin", "PWD"=>"admin");
-// Create connection
-$conn = sqlsrv_connect( $serverName, $connectionInfo);  
-
-// Check connection
-if (!($conn)) {
-  die("Connection failed: " . print_r(sqlsrv_errors(), true));
-}
-if ($conn)
-    echo "success<br>";
 /* $param = array("seifelden073@gmail.com", "seif", "Seif-Elden" ,"Mohamed", 0, UserType::BUYER , "01142236508", "Male", "52 abdel qader" ); */
 /* $stmt = sqlsrv_query($conn,"INSERT into  [user](email, [password], fname, lname, ban_state, user_type, phone_num, gender, [address]) 
 VALUES('seifelden073@gmail.com', 'seif', 'Seif-Elden' ,'Mohamed', 0, 3 , '01142236508', 'Male', '52 abdel qader' )");
