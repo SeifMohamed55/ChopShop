@@ -1,0 +1,72 @@
+body {
+    background:no-repeat cover fixed;
+    background-image: url("../photos/online-shopping-m.jpg");
+  }
+  
+  #nav ul {
+    text-align: left;
+    background-color:#FE9677;
+    padding: 0;
+    margin: 0;
+    overflow: hidden;
+    list-style-type: none;
+    position: sticky;
+    top: 0;
+  }
+  
+  #nav li {
+    float: left;
+    padding: 40px;
+    display: block;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    ;
+  }
+  
+  #nav li a {
+    font-family: 'Times New Roman', Times, serif;
+    color: black;
+    text-decoration: none;
+    padding: 20px;
+    font-style: none;
+    display: inline;
+  }
+  
+  #navitem {
+    background-color: #905d71;
+  }
+  
+  li a:hover:not(#navitem) {
+    background-color: #984063;
+  }
+  
+  #nav li a:hover {
+    background-color: #fd8a68 ;
+    transition: 0.2ms;
+  }
+  #selling {
+    display: inline;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  max-width: 50rem;
+  max-height: 50rem;
+  background-color: #ffb7a0;
+  padding: 60px 50px;
+  box-shadow: 0 4rem 6rem rgb(0 0 0);
+  border-radius: 50px;
+  height: max-content;
+  width: 40%;
+  text-align: center;
+  }
+  .text {
+    border-radius: 8px;
+    border: solid rgb(0, 0, 0) 2px;
+  }
+  *{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
