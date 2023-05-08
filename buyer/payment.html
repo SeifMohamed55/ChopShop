@@ -36,7 +36,7 @@
                 <input type="number" style="width: 40px;" required name="Quantity">
                 </div>
                 <div id="amount">
-                <label for="amount">Amount:</label>
+                <label for="amount">Payment:</label>
                 <input type="number" style="width: 80px;" required  name="amount">
                 </div>
             </center>
@@ -49,21 +49,21 @@
                 <br>
                 <div class="credit">
                     <label for="card-number">Card number:</label>
-                    <input type="number" placeholder="XXXX-XXXX-XXXX-XXXX" style="width: fit-content;" required>
+                    <input type="number" placeholder="XXXX-XXXX-XXXX-XXXX" style="width: fit-content;" required pattern="[0-9]{16}" title="">
                     <img src="../photos/cardlogo.png" height="15px" width="20px">
                 </div>
                 <br>
                 <div class="credit">
                     <label for="exp-date">Exp. Date :</label>
-                    <input type="monthy" placeholder="MM" style="width: 30px;" size="2" required>
-                    <input type="year" placeholder="YY" style="width: 30px;" size="2" required>
-                    <label for="cvv">CCV</label>
-                    <input type="number" placeholder="CCV" style="width: 50px;" required>
+                    <input type="month" placeholder="MM/YY" style="width: 120px;" required>
+
+                    <label for="cvv" required pattern="[0-9]{3}">CCV</label>
+                    <input type="number" placeholder="CCV" style="width: 50px;" required pattern="[0-9]{3}">
                 </div>
                 <br><br>
                 
             </div>
-            <input type="submit" onclick="" style="width: 15%; margin-left: 45% ;" id="submit">
+            <input type="submit" style="width: 15%; background-color: #41436A; color: #ffb7a0; border-radius: 15px; padding: 7px; margin-left: 45% ;" id="submit">
         </form>
     </div>
 
