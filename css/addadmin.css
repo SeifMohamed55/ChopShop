@@ -152,7 +152,20 @@ a {
   border-radius: 50px;
 }
 
-.btn2 {
+.submit {
+  background-color: #984063;
+  height: 50px;
+  border: none;
+  padding: 15px 100px;
+  cursor: pointer;
+  border-radius: 50px;
+  color: #f3f3f3;
+  font-size: medium;
+  margin-top: 0%;
+
+}
+
+#btn2 {
   margin-left: 20px;
   flex-basis: 230%;
   background-color: burlywood;

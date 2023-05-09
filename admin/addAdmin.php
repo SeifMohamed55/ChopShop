@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -27,7 +30,7 @@
         <h3>create administrator account</h3>
       </div> <br>
         <div class="input">
-          <form method="POST" action="addAdminScript.php.php" onsubmit="return alert('<?php if(isset($_SESSION['regmsg'])) echo $_SESSION['regmsg']; ?>')">
+          <form method="post" action="addAdminScript.php" onsubmit="return alert('<?php if(isset($_SESSION['admsg'])){echo $_SESSION['admsg'];}?>')">
             <img src="../photos/user.png" alt="Fname" width="20" height="20">
             <input type="text" id="fname" name="fname" placeholder="First Name" required><br><br>
 
@@ -41,17 +44,18 @@
             <input type="password" id="password" name="password" placeholder="password" required><br><br>
 
             <img src="../photos/phone.png" alt="phone " width="20" height="20">
-            <input type="tel" id="phone" name="phone" placeholder="Phone Number" required required><br><br>
+            <input type="tel" id="phone" name="phoneNum" placeholder="Phone Number" required ><br><br>
+
+            <img src="../photos/addresslogo.png" alt="address" width="20" height="20">
+            <input type="text" id="address" name="address" placeholder="address" required><br><br>
             
             <img src="../photos/sex.png" alt="Fname" width="20" height="20">
-            <input type="radio" id="Male" name="Sex" value="Male" required>
+            <input type="radio" id="Male" name="gender" value="Male" required>
             <label for="html">Male</label>
-            <input type="radio" id="css" name="Sex" value="Female">
+            <input type="radio" id="css" name="gender" value="Female">
             <label for="css">Female</label>
             <br><br><br>
-            <button class="btn2" style="position: center;"><a href="">
-                <h4>Add</h4>
-              </a></button>
+            <input type="submit" id="btn2" name="Login" value="Add">
           </form>
         </div>
         <br><br>
