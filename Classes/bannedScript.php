@@ -22,6 +22,6 @@ $user = $_SESSION['user'];
      $banned_user = $user->getBannedUsers(); 
     }
    $_SESSION['banned_user'] = $banned_user;
-   header('localhost/banned.html');
+   header('localhost/bannedusers.html');
 
 ?>
