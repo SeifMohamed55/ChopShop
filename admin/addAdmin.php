@@ -30,7 +30,7 @@ session_start();
         <h3>create administrator account</h3>
       </div> <br>
         <div class="input">
-          <form method="post" action="addAdminScript.php" onsubmit="return alert('<?php if(isset($_SESSION['admsg'])){echo $_SESSION['admsg'];}?>')">
+          <form method="post" action="addAdminScript.php">
             <img src="../photos/user.png" alt="Fname" width="20" height="20">
             <input type="text" id="fname" name="fname" placeholder="First Name" required><br><br>
 
@@ -55,7 +55,24 @@ session_start();
             <input type="radio" id="css" name="gender" value="Female">
             <label for="css">Female</label>
             <br><br><br>
-            <input type="submit" id="btn2" name="Login" value="Add">
+            <?php
+              // Check if a condition is true
+              if (!isset($_SESSION['adminBool'])) {
+                  // Display an error message
+                  $_SESSION['adminBool'] = null;
+              }
+              elseif($_SESSION['adminBool'] == true){
+                echo '<div>'.'<br>'.$_SESSION["regmsg"].'</div>';
+                $_SESSION['adminBool'] = null;
+              }
+              elseif($_SESSION['adminBool'] == false)
+              {
+                echo '<div>'.$_SESSION["regmsg"].'<br>'.'<br>'.'</div>';
+                $_SESSION['adminBool'] = null;
+              }
+            ?>
+            
+            <input type="submit" id="btn2" name="Login" value="Add" style="margin-left: 20px; flex-basis: 230%; background-color: burlywood; height: 50px; border: none; padding: 15px 30px; cursor: pointer; border-radius: 50px; text-align: center;">
           </form>
         </div>
         <br><br>

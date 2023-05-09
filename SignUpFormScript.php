@@ -28,9 +28,12 @@ if ($_SERVER['REQUEST_METHOD'] == "POST"){
     }
    if (User::register($user)){
     $regmsg = "User registered successfully";
+    $_SESSION['signUpBool'] = true;
    }
    else{
     $regmsg = "Something went wrong or email already in use";
+    $_SESSION['signUpBool'] = false;
+
    }
   
   }

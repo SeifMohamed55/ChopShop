@@ -19,8 +19,7 @@
         <h1>Sign UP</h1>
         <h3>Create an Account Now !</h3>
       </div> <br>
-      <form action="SignUpFormScript.php" method="post" 
-      onsubmit="return alert('<?php if(isset($_SESSION['regmsg'])) {echo $_SESSION['regmsg'];} ?>')">
+      <form action="SignUpFormScript.php" method="post">
         <div class="input">
           <img src="photos/user.png" alt="Fname" width="20" height="20">
           <input type="text" id="fname" name="fname" placeholder="First Name" required><br><br>
@@ -52,6 +51,22 @@
           <input type="radio" id="seller" name="userType" value="Seller" required>
           <label for="css">Seller</label><br>
           <br>
+          <?php
+              // Check if a condition is true
+              if (!isset($_SESSION['signUpBool'])) {
+                  // Display an error message
+                  $_SESSION['signUpBool'] = null;
+              }
+              elseif($_SESSION['signUpBool'] == true){
+                echo '<div>'.'<br>'.$_SESSION["admsg"].'</div>';
+                $_SESSION['signUpBool'] = null;
+              }
+              elseif($_SESSION['signUpBool'] == false)
+              {
+                echo '<div>'.$_SESSION["admsg"].'<br>'.'<br>'.'</div>';
+                $_SESSION['signUpBool'] = null;
+              }
+            ?>
           <input type="submit" class="submit" name="Login" value="Sign UP">
       </form>
       <form action="index.php"><input type="submit" class="submit2" value="Log in"></form>
