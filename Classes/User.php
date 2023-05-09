@@ -44,6 +44,16 @@ abstract class User implements Notifications{
         return $this->noOfCateg;
     }
     function getFollowedCategories(){
+        $database = new Database();
+        $ID = User::getIDFromEmail($this->email);
+        $stmt = $database->execute("select [user_ID], category 
+                from followed_categories where [user_ID] = ?",array($ID));
+                $j = 0;
+         while( $row = sqlsrv_fetch_array( $stmt, SQLSRV_FETCH_ASSOC) ) {
+                $this->followedCategories[$j] = $row['category'];
+                $j++;
+            }
+            $this->noOfCateg = count($this->followedCategories);
         return $this->followedCategories;
     }
     function setEmail($email){
@@ -104,82 +114,40 @@ abstract class User implements Notifications{
         return false;
     }
    static function login($email, $password){
-        $hash = substr(password_hash($password, PASSWORD_DEFAULT), 0, 70);
         $database = new Database();
-        $stmt = $database->execute("select email, [password] from [user] where email = ?", array($email));
-        if ($stmt){
+        $stmt = $database->execute("SELECT email, [password] from [user] where email = ?", array($email));
+       
             $row = sqlsrv_fetch_array($stmt, SQLSRV_FETCH_ASSOC);
-            if($row['email'] == $email && $row['password'] == $hash){
-               $stmt = $database->execute("select * from user where email = ?", array($email));
-               for($i=0 ; $i < 9 ; $i++){
+            if($row['email'] == $email && password_verify($password, $row['password'])){
+               $stmt = $database->execute("SELECT * from [user] where email = ?", array($email));
+               sqlsrv_fetch($stmt);
+               for($i=0 ; $i <= 9 ; $i++){
                 $info[$i] = sqlsrv_get_field( $stmt, $i);
                }
-               $type = $database->execute("select user_type from [user] where email = ?", array($email));
+               $type = $info[6];
                if ($type == UserType::ADMIN){
-                    $stmtb = $database->execute("select email , fname , lname from [user] where ban_state = 1",null);
-                    $j = 0;
-                    while( $row = sqlsrv_fetch_array( $stmtb, SQLSRV_FETCH_ASSOC) ) {
-                        $bannedUsers[$j] = array($row['email'], $row['fname'], $row['lname'] );
-                        $j++;
-                    }
-                    $stmtb = $database->execute("select ID,email , fname, lname, [reported_userID], [description]
-                    from [user] join report_user on [user].ID = report_user.[reported_userID]", null);
-                    $j = 0;
-                    while( $row = sqlsrv_fetch_array( $stmtb, SQLSRV_FETCH_ASSOC) ) {
-                        $reportedUsers[$j] = array($row['email'], $row['fname'], $row['lname'] , $row['description'] );
-                        $j++;
-                    }
-                    $user = new Admin($info[1],$info[8],$info[2],$info[3],$info[4],$info[5],$info[6],$info[7], $info[9], $bannedUsers, $reportedUsers);
+                    
+                    
+                    
+                    $user = new Admin($info[1],$info[8],$info[2],$info[3],$info[4],$info[5],$info[7],$info[6], $info[9]);
                     return $user;
                 }
                if ($type == UserType::BUYER){
-                    $stmt = $database->execute("select [user_ID], category 
-                    from followed_categories where [user_ID] = ?",array($info[0]));
-                    $j = 0;
-                    while( $row = sqlsrv_fetch_array( $stmt, SQLSRV_FETCH_ASSOC) ) {
-                        $followedCategories[$j] = $row['category'];
-                        $j++;
-                    }
-                    $stmt = $database->execute("select seller_id, [user_id], email
-                    from [user] join followed_sellers on [user].ID = [seller_id]
-                    where [user_id] = ?", array($info[0]));
-                    $j = 0;
-                    while( $row = sqlsrv_fetch_array( $stmt, SQLSRV_FETCH_ASSOC)){
-                        $followedSellers[$j] = $row['email'];
-                        $j++;
-                    }
-                    $stmt = $database->execute("select [user_ID], prod_barcode from user_wishlists
-                    where [user_ID] = ?", array($info[0]));
-                    $j = 0;
-                    while( $row = sqlsrv_fetch_array( $stmt, SQLSRV_FETCH_ASSOC)){
-                        $wishlist[$j] = $row['prod_barcode'];
-                        $j++;
-                    }
-                    $user = new Buyer($info[1],$info[8],$info[2],$info[3],$info[4],$info[5],$info[6],$info[7], $info[9],$followedCategories, $followedSellers , null, $wishlist );
+                    
+                    
+                    
+                   
+                    $user = new Buyer($info[1],$info[8],$info[2],$info[3],$info[4],$info[5],$info[6],$info[7], $info[9]);
                     return $user;
                 }
                
                if ($type == UserType::SELLER){
-                    $stmt = $database->execute("select [user_ID], category 
-                    from followed_categories where [user_ID] = ?",array($info[0]));
-                    $j = 0;
-                    while( $row = sqlsrv_fetch_array( $stmt, SQLSRV_FETCH_ASSOC) ) {
-                        $followedCategories[$j] = $row['category'];
-                        $j++;
-                    }
-                    $stmt = $database->execute("select seller_ID, barcode
-                    from product where seller_ID = ?",array($info[0]));
-                    $j = 0;
-                    while( $row = sqlsrv_fetch_array( $stmt, SQLSRV_FETCH_ASSOC) ) {
-                        $onSaleProduct[$j] = $row['barcode'];
-                        $j++;
-                    }
-
-                    $user = new Seller($info[1],$info[8],$info[2],$info[3],$info[4],$info[5],$info[6],$info[7],$info[9], $followedCategories, $onSaleProduct);
+                    
+                    $user = new Seller($info[1],$info[2],$info[3],$info[4],$info[5],$info[6],$info[7],$info[8],$info[9]);
                     return $user;
                }
             }
-        }
+        
         return false;
     }   
     static function register($user): bool{

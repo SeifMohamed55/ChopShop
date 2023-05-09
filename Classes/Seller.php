@@ -3,7 +3,7 @@ class Seller extends User{
     private $onSaleProduct = array();
     private $noOfProd = 0;
 
-    function __construct($email, $password, $fname, $lname, $banState, $userType, $phoneNum, $gender, $address, $followedCategories, $onSaleProduct){
+    function __construct($email, $password, $fname, $lname, $banState, $userType, $phoneNum, $gender, $address){
         $this->email = $email;
         $this->password = substr(password_hash($password, PASSWORD_DEFAULT), 0, 70);
         $this->fname = $fname;
@@ -12,14 +12,20 @@ class Seller extends User{
         $this->gender = $gender;
         $this->userType = $userType;
         $this->phoneNum = $phoneNum;
-        $this->followedCategories = $followedCategories;
-        $this->noOfCateg = count($followedCategories);
-        $this->onSaleProduct = $onSaleProduct;
-        $this->onSaleProduct = count($onSaleProduct);
         $this->address = $address;
 
     }
     function getOnSaleProduct(){
+        $database = new Database();
+        $ID = User::getIDFromEmail($this->email);
+        $stmt = $database->execute("select seller_ID, barcode
+                from product where seller_ID = ?",array($ID));
+        $j = 0;
+        while( $row = sqlsrv_fetch_array( $stmt, SQLSRV_FETCH_ASSOC) ) {
+                $this->onSaleProduct[$j] = $row['barcode'];
+                    $j++;
+                }
+            $this->noOfProd = count($this->onSaleProduct);
         return $this->onSaleProduct;
     }
     function getID(){

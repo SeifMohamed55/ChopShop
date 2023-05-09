@@ -3,8 +3,10 @@ class Admin extends User{
 
     private $bannedUsers = array();
     private $reportedUsers = array();
+    private $noOfBanned;
+    private $noOfReported;
 
-    function __construct($email, $gender, $password, $fname, $lname, $banState, $phoneNum, $userType, $address, $bannedUsers, $reportedUsers){
+    function __construct($email, $gender, $password, $fname, $lname, $banState, $phoneNum, $userType, $address){
         $this->email = $email;
         $this->password = $password;
         $this->fname = $fname;
@@ -13,15 +15,36 @@ class Admin extends User{
         $this->gender = $gender;
         $this->userType =$userType;
         $this->phoneNum = $phoneNum;
-        $this->bannedUsers = $bannedUsers;
-        $this->reportedUsers = $reportedUsers;
         $this->address = $address;
     }
   
     function getBannedUsers(){
+        $database = new Database();
+        $stmt = $database->execute("select email , fname , lname from [user] where ban_state = 1",null);
+                    $j = 0;
+                    while( $row = sqlsrv_fetch_array( $stmt, SQLSRV_FETCH_ASSOC) ) {
+                        $this->bannedUsers[$j] = array($row['email'], $row['fname'], $row['lname'] );
+                        $j++;
+                    }
+                    $this->noOfBanned = count($this->bannedUsers);
         return $this->bannedUsers;
     }
+    function getNoOfBanned(){
+        return $this->noOfBanned;
+    }
+    function getNoOfReported(){
+        return $this->noOfReported;
+    }
     function getReportedUsers(){
+        $database = new Database();
+        $stmt = $database->execute("SELECT ID,email , fname, lname, [reported_userID], [description]
+                    from [user] join report_user on [user].ID = report_user.[reported_userID]", null);
+                    $j = 0;
+                    while( $row = sqlsrv_fetch_array( $stmt, SQLSRV_FETCH_ASSOC) ) {
+                        $this->reportedUsers[$j] = array($row['email'], $row['fname'], $row['lname'] , $row['description'] );
+                        $j++;
+                    }
+                    $this->noOfReported = count($this->reportedUsers);
         return $this->reportedUsers;
     }
     function getID(){

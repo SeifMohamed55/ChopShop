@@ -42,6 +42,26 @@ else{
 } */
 
 
-$user = new Seller("seifelden073@gmail.com", "seif", "Seif-Elden" ,"Mohamed", 0, UserType::SELLER 
-, "01142236508", "Male", "52 abdel qader",array(),array());
-User::register($user);
+/* $user = new Seller("seifelden073@gmail.com", "seif", "Seif-Elden" ,"Mohamed", 0, UserType::SELLER 
+, "01142236508", "Male", "52 abdel qader",array(),array()); */
+$database = new Database();
+$stmt = $database->execute("SELECT * from [user] where email = ?", array('seifelden073@gmail.com'));
+ sqlsrv_fetch($stmt);
+ for($i=0 ; $i < 9 ; $i++){
+    $info[$i] = sqlsrv_get_field( $stmt, $i);
+}
+for($i = 0; $i < 9; $i++){
+    echo $info[$i];
+}
+echo '<br>';
+/* $hash = substr(password_hash('seif', PASSWORD_DEFAULT), 0, 70);
+$user = User::login('seifelden073@gmail.com', $hash);
+echo var_dump($user); */
+$user1 = User::login('seifelden073@gmail.com','seif');
+echo $user1->getEmail() . "<br>" . $user1->getID() ."<br>". $user1->getFname() . "<br>" . $user1->getLname();
+$user = User::login('seifelden073@gmail.com', 'lolo');
+ if($user == false) {
+    echo '<script type="text/javascript">alert("'.$user1->getEmail().'");</script>';
+  }?>
+ 
+

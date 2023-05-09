@@ -9,7 +9,7 @@ class Buyer extends User{
     private int $noOfWishlist; // no of products in wishlist
     private int $noOfProd;  // no of products in cart
     private int $noFollowedSellers; // no of followed sellers
-    function __construct($email, $gender, $password, $fname, $lname, $banState, $userType, $phoneNum, $address, $followedCategories, $followedSellers, $productCart, $wishlist ){
+    function __construct($email, $gender, $password, $fname, $lname, $banState, $userType, $phoneNum, $address){
         $this->email = $email;
         $this->password = substr(password_hash($password, PASSWORD_DEFAULT), 0, 70);
         $this->fname = $fname;
@@ -17,27 +17,22 @@ class Buyer extends User{
         $this->banState = $banState;
         $this->userType = $userType;
         $this->phoneNum = $phoneNum;
-        $this->followedCategories = $followedCategories;
-        $this->followedSellers = $followedSellers;
-        $this->productCart = $productCart;
-        $this->wishlist = $wishlist;
-        $this->noOfWishlist = count($this->wishlist);
-        $this->noOfCateg = count($this->followedCategories);
-        $this->noFollowedSellers = count($this->followedSellers);
         $this->noOfProd = count($this->productCart);
         $this->gender = $gender;  
         $this->address = $address;
-
-
     }
     
-     function getFollowedCategories(){
-        return $this->followedCategories;
-    }
-    function getProductCart(){
-        return $this->productCart;
-    }
     function getWishlist(){
+        $ID = User::getIDFromEmail($this->email);
+        $database = new Database();
+        $stmt = $database->execute("select [user_ID], prod_barcode from user_wishlists
+                    where [user_ID] = ?", array($ID));
+                    $j = 0;
+                    while( $row = sqlsrv_fetch_array( $stmt, SQLSRV_FETCH_ASSOC)){
+                        $this->wishlist[$j] = $row['prod_barcode'];
+                        $j++;
+                    }
+                    $this->noOfWishlist = count($this->wishlist);
         return $this->wishlist;
     }
     function getID(){
@@ -62,6 +57,20 @@ class Buyer extends User{
             return true;
         }
         return false;
+    }
+    function getFollowedSellers(){
+        $ID = User::getIDFromEmail($this->email);
+        $database = new Database();
+        $stmt = $database->execute("select seller_id, [user_id], email
+                    from [user] join followed_sellers on [user].ID = [seller_id]
+                    where [user_id] = ?", array($ID));
+                    $j = 0;
+                    while( $row = sqlsrv_fetch_array( $stmt, SQLSRV_FETCH_ASSOC)){
+                        $this->followedSellers[$j] = $row['email'];
+                        $j++;
+                    }
+                    $this->noFollowedSellers = count($this->followedSellers);
+                    return $this->followedSellers;
     }
     
    /*  function addToCart($prod){

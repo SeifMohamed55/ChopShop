@@ -1,41 +1,4 @@
-<?php
-session_start();
-include_once 'Classes/Buyer.php';
-include_once 'Classes/Categories.php';
-include_once 'Classes/Database.php';
-include_once 'Classes/Feedback.php';
-include_once 'Classes/Order.php';
-include_once 'Classes/Payment.php';
-include_once 'Classes/PayMethod.php';
-include_once 'Classes/Product.php';
-include_once 'Classes/Seller.php';
-include_once 'Classes/User.php';
-include_once 'Classes/UserType.php';
-
-/*
-1- check for radio buttons 
-2- check $_POST['gender']
-*/
-$regmsg = "";
-if ($_SERVER['REQUEST_METHOD'] == "POST"){
-    if ($_POST['userType'] == "Seller"){
-      $user = new Seller($_POST['email'], $_POST['password'], $_POST['fname'],
-       $_POST['lname'],0,UserType::SELLER,$_POST['phoneNum'],$_POST['gender'],$_POST['address'],array(), array()); 
-    }
-    else if ($_POST['userType'] == "Buyer"){
-      $user = new Buyer($_POST['email'],$_POST['gender'],$_POST['password'],
-        $_POST['fname'],$_POST['lname'],0,UserType::BUYER,$_POST['phoneNum'], $_POST['address'],array(),array(),array(),array());
-    }
-   if (User::register($user)){
-    $regmsg = "User registered successfully";
-   }
-   else{
-    $regmsg = "Something went wrong or email already in use";
-   }
-  
-  }
-  $_SESSION['regmsg'] = $regmsg;
-  ?>
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -56,7 +19,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST"){
         <h1>Sign UP</h1>
         <h3>Create an Account Now !</h3>
       </div> <br>
-      <form action="" method="post" onsubmit="return alert('<?php  echo $_SESSION['regmsg']; ?>')">
+      <form action="SignUpFormScript.php" method="post" onsubmit="return alert('<?php if(isset($_SESSION['regmsg'])) echo $_SESSION['regmsg']; ?>')">
         <div class="input">
           <img src="photos/user.png" alt="Fname" width="20" height="20">
           <input type="text" id="fname" name="fname" placeholder="First Name" required><br><br>
@@ -90,7 +53,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST"){
           <br>
           <input type="submit" class="submit" name="Login" value="Sign UP">
       </form>
-      <form action="index.html"><input type="submit" class="submit2" value="Log in"></form>
+      <form action="index.php"><input type="submit" class="submit2" value="Log in"></form>
     </div>
   </div>
   </div>
