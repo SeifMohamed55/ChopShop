@@ -21,32 +21,65 @@
 <body>
     <br> <br> <br>
     <div id="form">
-        <form action="/action_page.php">
-            <label for="">Payment amount</label>
-            <input type="number">
-            <br> <br>
-            <label for="cars">Choose a payment method:</label>
-            <select id="cars" name="cars" required>
-              <option value="cash">Cash</option>
-              <option value="Credit">Credit card</option>
-              <option value="Other">Other</option>
-            </select>
-            <input type="submit">
-          </form>
+        <form action="">
+            <center>
+                <label for="change_chart">Choose a payment method:</label>
+                <select id="change_chart" name="change_chart" onchange="myFunction(event)" required>
+                    <option value="1" selected>Select one</option>
+                    <option value="2" id="cash">Cash</option>
+                    <option value="3" id="cd">Credit card</option>
+                </select>
+
+                <br><br>
+                <div id="q">
+                    <label for="Quantity">Quantity:</label>
+                <input type="number" style="width: 40px;" required name="Quantity">
+                </div>
+                <div id="amount">
+                <label for="amount">Payment:</label>
+                <input type="number" style="width: 80px;" required  name="amount">
+                </div>
+            </center>
+            <br>
+            <div id="creditcard" style="margin-left: 28%;">
+                <div class="credit">
+                    <label for="cardholder-name">Card holder name:</label>
+                    <input type="text" placeholder="Full Name" style="width: 150px;" required>
+                </div>
+                <br>
+                <div class="credit">
+                    <label for="card-number">Card number:</label>
+                    <input type="number" placeholder="XXXX-XXXX-XXXX-XXXX" style="width: fit-content;" required pattern="[0-9]{16}" title="">
+                    <img src="../photos/cardlogo.png" height="15px" width="20px">
+                </div>
+                <br>
+                <div class="credit">
+                    <label for="exp-date">Exp. Date :</label>
+                    <input type="month" placeholder="MM/YY" style="width: 120px;" required>
+
+                    <label for="cvv" required pattern="[0-9]{3}">CCV</label>
+                    <input type="number" placeholder="CCV" style="width: 50px;" required pattern="[0-9]{3}">
+                </div>
+                <br><br>
+                
+            </div>
+            <input type="submit" value="Purchase" style="width: 15%; width: max-content; background-color: #41436A; color: #ffb7a0; border-radius: 15px; padding: 7px; margin-left: 45% ;" id="submit">
+        </form>
     </div>
+
 </body>
 <footer>
-    <div id="back">
-        <a href="#home">Back Top</a>
-    </div>
     <div id="about">
-        <ul>
-            <li id="Y"><a href="https://www.youtube.com/@GoogleArabia" target="_blank">Youtube</a></li>
-            <li id="F"><a href="https://www.facebook.com/Google/" target="_blank">Facebook</a></li>
-            <li id="T"><a href="https://twitter.com/Google" target="_blank">Twitter</a></li>
-            <li id="I"><a href="https://www.instagram.com/google/" target="_blank">Instagram</a></li>
+        <ul style="margin-left: 10px; margin-right: 10px; margin-bottom: 1px;">
+            <li id="Y" style="margin-left: 20px;"><a href="https://www.youtube.com/@GoogleArabia"
+                    target="_blank">Youtube</a></li>
+            <li id="F" style="margin-left: 20px;"><a href="https://www.facebook.com/Google/"
+                    target="_blank">Facebook</a></li>
+            <li id="T" style="margin-left: 20px;"><a href="https://twitter.com/Google" target="_blank">Twitter</a></li>
+            <li id="I" style="margin-left: 20px;"><a href="https://www.instagram.com/google/"
+                    target="_blank">Instagram</a></li>
         </ul>
     </div>
 </footer>
-
+<script src="../for_abdo_only.js"></script>
 </html>
