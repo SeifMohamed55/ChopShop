@@ -1,4 +1,5 @@
 <?php
+include_once 'User.php';
 class Admin extends User{
 
     private $bannedUsers = array();
@@ -8,7 +9,7 @@ class Admin extends User{
 
     function __construct($email, $gender, $password, $fname, $lname, $banState, $phoneNum, $userType, $address){
         $this->email = $email;
-        $this->password = $password;
+        $this->password = substr(password_hash($password, PASSWORD_DEFAULT), 0, 70);
         $this->fname = $fname;
         $this->lname = $lname;
         $this->banState = $banState;
@@ -93,5 +94,21 @@ class Admin extends User{
         if ($rows_affected == 0)
             return false;
         return true;
+    }
+    static function register($user): bool{
+        $database = new Database();
+        $stmt = $database->execute("SELECT email from [user]",null);
+        while( $row = sqlsrv_fetch_array( $stmt, SQLSRV_FETCH_ASSOC) ) {
+            if ($row['email'] == $user->email)
+                return false;
+        }
+        $stmt = $database->execute("INSERT into 
+        [user](email , [password], fname, lname, ban_state, user_type, phone_num, gender, [address])
+         VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?)", array($user->email, $user->password, $user->fname,
+          $user->lname, 0, $user->userType, $user->phoneNum, $user->gender, $user->address));
+          $rows_affected = sqlsrv_rows_affected($stmt);
+          if ($rows_affected == 0)
+              return false;
+          return true;
     }
 }

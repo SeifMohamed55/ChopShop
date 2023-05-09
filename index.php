@@ -10,6 +10,7 @@ include_once 'Classes/Product.php';
 include_once 'Classes/Seller.php';
 include_once 'Classes/User.php';
 include_once 'Classes/UserType.php';
+include_once 'Classes/Admin.php';
 session_start();
  ?>
 <!DOCTYPE html>
@@ -46,7 +47,7 @@ session_start();
               // Check if a condition is true
               if (isset($_SESSION['bool'])) {
                   // Display an error message
-                  echo '<div><br><br>Error: You are not logged in!</div>';
+                  echo '<div><br><br>Error: Wrong Email or password!</div>';
                   $_SESSION['bool'] = null;
               }
             ?>

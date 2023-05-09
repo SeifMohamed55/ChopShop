@@ -1,4 +1,15 @@
 <?php
+include_once 'Buyer.php';
+include_once 'Categories.php';
+include_once 'Database.php';
+include_once 'Feedback.php';
+include_once 'Order.php';
+include_once 'Payment.php';
+include_once 'PayMethod.php';
+include_once 'Product.php';
+include_once 'Seller.php';
+include_once 'User.php';
+include_once 'UserType.php';
 class Seller extends User{
     private $onSaleProduct = array();
     private $noOfProd = 0;

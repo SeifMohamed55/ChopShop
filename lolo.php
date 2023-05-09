@@ -7,7 +7,9 @@ include_once "Classes/Buyer.php";
 include_once "Classes/Product.php";
 include_once "Classes/Database.php";
 include_once "Classes/Seller.php";
-echo Categories::TOYS ."<br>";
+include_once "Classes/Admin.php";
+
+/* echo Categories::TOYS ."<br>";
 echo Categories::ELCTRONICS."<br>";
 echo UserType::ADMIN."<br>"; 
 $d = date("y-m-d");
@@ -16,7 +18,7 @@ echo "<br>" . $new_date . "<br>";
 $auc = strtotime($d);
 $cat = array(Categories::CLOTHING,Categories::ELCTRONICS,Categories::KITCHEN,Categories::TOYS);
 echo $auc;
-echo date("Y-m-d", $auc) . "<br>" . date("Y-m-d",strtotime("+6 months"));
+echo date("Y-m-d", $auc) . "<br>" . date("Y-m-d",strtotime("+6 months")); */
 
 /* $param = array("seifelden073@gmail.com", "seif", "Seif-Elden" ,"Mohamed", 0, UserType::BUYER , "01142236508", "Male", "52 abdel qader" ); */
 /* $stmt = sqlsrv_query($conn,"INSERT into  [user](email, [password], fname, lname, ban_state, user_type, phone_num, gender, [address]) 
@@ -42,9 +44,11 @@ else{
 } */
 
 
-/* $user = new Seller("seifelden073@gmail.com", "seif", "Seif-Elden" ,"Mohamed", 0, UserType::SELLER 
-, "01142236508", "Male", "52 abdel qader",array(),array()); */
-$database = new Database();
+ $user = new Admin("seifelden555@gmail.com", "Male", "seif","Seif-Elden" ,"Mohamed", 0,"01142236508",
+  UserType::ADMIN , "52 abdel qader"); 
+
+User::register($user);
+/* $database = new Database();
 $stmt = $database->execute("SELECT * from [user] where email = ?", array('seifelden073@gmail.com'));
  sqlsrv_fetch($stmt);
  for($i=0 ; $i < 9 ; $i++){
@@ -53,15 +57,22 @@ $stmt = $database->execute("SELECT * from [user] where email = ?", array('seifel
 for($i = 0; $i < 9; $i++){
     echo $info[$i];
 }
-echo '<br>';
-/* $hash = substr(password_hash('seif', PASSWORD_DEFAULT), 0, 70);
+echo '<br>'; */
+/* /* $hash = substr(password_hash('seif', PASSWORD_DEFAULT), 0, 70);
 $user = User::login('seifelden073@gmail.com', $hash);
 echo var_dump($user); */
-$user1 = User::login('seifelden073@gmail.com','seif');
+/* $user1 = User::login('seifelden073@gmail.com','seif');
 echo $user1->getEmail() . "<br>" . $user1->getID() ."<br>". $user1->getFname() . "<br>" . $user1->getLname();
 $user = User::login('seifelden073@gmail.com', 'lolo');
  if($user == false) {
     echo '<script type="text/javascript">alert("'.$user1->getEmail().'");</script>';
-  }?>
+  } */
+  
+ 
+  
+  
+  ?>
+
+  
  
 

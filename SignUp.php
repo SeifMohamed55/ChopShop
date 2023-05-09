@@ -19,7 +19,8 @@
         <h1>Sign UP</h1>
         <h3>Create an Account Now !</h3>
       </div> <br>
-      <form action="SignUpFormScript.php" method="post" onsubmit="return alert('<?php if(isset($_SESSION['regmsg'])) echo $_SESSION['regmsg']; ?>')">
+      <form action="SignUpFormScript.php" method="post" 
+      onsubmit="return alert('<?php if(isset($_SESSION['regmsg'])) {echo $_SESSION['regmsg'];} ?>')">
         <div class="input">
           <img src="photos/user.png" alt="Fname" width="20" height="20">
           <input type="text" id="fname" name="fname" placeholder="First Name" required><br><br>

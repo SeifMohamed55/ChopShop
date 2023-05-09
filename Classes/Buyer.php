@@ -1,7 +1,7 @@
 <?php
-//modify getters and setters with database
-include_once "Classes/Notifications.php";
-include_once "Classes/User.php";
+include_once 'Buyer.php';
+include_once 'Admin.php';
+include_once 'Seller.php';
 class Buyer extends User{
     private  $followedSellers = array(); //array of users
     private  $productCart = array(); //array of products

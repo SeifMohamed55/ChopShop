@@ -1,5 +1,6 @@
 <?php
 include_once "Notifications.php";
+include_once "Admin.php";
 abstract class User implements Notifications{
     protected int $ID;
     protected string $email;
