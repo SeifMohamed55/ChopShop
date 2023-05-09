@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/adminStyleSheet.css">
-    <title>Remove a product</title>
+    <title>Banned users</title>
 </head>
 
 <body>
@@ -23,17 +23,40 @@
             </ul>
         </div>
     </header>
-    <div id="selling">
-        <form action="">
-            <p>Remove a product:</p><br>
 
-            <label for="pname"><img src="../photos/icons8-product-24.png" alt="" width="20px" height="20px" style="margin-top: 2px;"></label>   
-            <input type="text" required class="text" placeholder="          Product_name" name="pname" style="height: 20px;">
-            <br> <br>
-            <label for="pid"><img src="../photos/user.png" alt="" width="20px" height="20px"></label>
-            <input type="number" required class="text" placeholder="            Product_id" name="pid" style="height: 20px;">
-            <br> <br>
-            <input type="submit" class="text" value="Remove" style="width: max-content; padding: 7px; background-color: #984063;" >
-        </form>
-    </div>
+    <center>
+        <table id="reptable">
+            <tr>
+                <th id="tbname">
+                    Name
+                </th>
+
+                <th id="tbmail">
+                    E-mail
+                </th>
+
+                <th id="tbdes">
+                    Description
+                </th>
+            </tr>
+
+
+            <tr>
+                <td>
+                    <label for="flname"> </label>
+                </td>
+
+
+                <td>
+                    <label for="e-mail"> </label>
+                </td>
+
+
+                <td>
+                    <label for="describtion"> </label>
+                </td>
+            </tr>
+
+        </table>
+    </center>
 </body>
