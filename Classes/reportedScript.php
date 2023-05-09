@@ -1,4 +1,5 @@
 <?php
+
 session_start();
 
 
@@ -13,20 +14,15 @@ include_once 'Classes/Product.php';
 include_once 'Classes/Seller.php';
 include_once 'Classes/User.php';
 include_once 'Classes/UserType.php';
+$user = $_SESSION['user'];
 
-$admsg = "";
-$_SESSION['admsg'] = $admsg;
-if ($_SERVER['REQUEST_METHOD'] == "post"){
+
+
     if ($_SESSION['user']->getUserType()==UserType::ADMIN){
-      $user = new Admin($_POST['email'],$_POST['gender'], $_POST['password'], $_POST['fname'],
-       $_POST['lname'],0,$_POST['phoneNum'],UserType::ADMIN,$_POST['address'],array(), array()); 
+     $rep_user = $user->getReportedUsers(); 
     }
-    }
-   if (User::register($user)){
-    $admsg = "Admin added successfully";
-   }
-   $admsg = "Something went wrong or admin is already available";
-
-   header('localhost/addadmin.html');
+   $_SESSION['rep_user'] = $rep_user;
+   header('localhost/reported.html');
   
 ?>
+
