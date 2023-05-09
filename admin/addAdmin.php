@@ -1,32 +1,61 @@
-<?php
-session_start();
+<!DOCTYPE html>
+<html lang="en">
 
+<head>
+  <meta charset="UTF-8" />
+  <link rel="stylesheet" href="../css/addadmin.css" />
+  <title> Add Admin</title>
+</head>
 
-include_once 'Classes/Buyer.php';
-include_once 'Classes/Categories.php';
-include_once 'Classes/Database.php';
-include_once 'Classes/Feedback.php';
-include_once 'Classes/Order.php';
-include_once 'Classes/Payment.php';
-include_once 'Classes/PayMethod.php';
-include_once 'Classes/Product.php';
-include_once 'Classes/Seller.php';
-include_once 'Classes/User.php';
-include_once 'Classes/UserType.php';
+<body background-image: linear-gradient(to bottom, rgba(152, 64, 99), rgba(0, 0, 255, 0.5) ), url(backg.png);>
+  <div id="nav">
+    <ul>
+      <li><a href="reported.html" class="navitem" id="reported">Reported users</a></li>
+      <li><a href="bannedusers.html" class="navitem" id="home">Banned users</a></li>
+      <li><a href="ban.html" class="navitem">Ban/Unban users</a></li>
+      <li><a href="rmvproduct.html" class="navitem">Remove a product</a></li>
+      <li><a href="adminprofile.html" class="navitem">Profile</a></li>
+      <li><a href="addadmin.html" class="navitem">Add admin</a></li>
+      <li style="float: right;"><a href="../index.html" class="navitem">Logout</a></li>
 
-$admsg = "";
-$_SESSION['admsg'] = $admsg;
-if ($_SERVER['REQUEST_METHOD'] == "post"){
-    if ($_SESSION['user']->getUserType()==UserType::ADMIN){
-      $user = new Admin($_POST['email'],$_POST['gender'], $_POST['password'], $_POST['fname'],
-       $_POST['lname'],0,$_POST['phoneNum'],UserType::ADMIN,$_POST['address'],array(), array()); 
-    }
-    }
-   if (User::register($user)){
-    $admsg = "Admin added successfully";
-   }
-   $admsg = "Something went wrong or admin is already available";
+    </ul>
+  </div>
+  <div class="container">
+    <div class="field">
+      <div class="text">
+        <h1>Add Admin</h1>
+        <h3>create administrator account</h3>
+      </div> <br>
+        <div class="input">
+          <form method="POST" action="addAdminScript.php.php" onsubmit="return alert('<?php if(isset($_SESSION['regmsg'])) echo $_SESSION['regmsg']; ?>')">
+            <img src="../photos/user.png" alt="Fname" width="20" height="20">
+            <input type="text" id="fname" name="fname" placeholder="First Name" required><br><br>
 
-   header('localhost/addadmin.html');
-  
-?>
+            <img src="../photos/user.png" alt="Lname" width="20" height="20">
+            <input type="text" id="lname" name="lname" placeholder="Last Name" required><br><br>
+
+            <img src="../photos/email.png" alt="email" width="20" height="20">
+            <input type="email" id="email" name="email" placeholder="Email" required><br><br>
+
+            <img src="../photos/password.png" alt="password" width="20" height="20">
+            <input type="password" id="password" name="password" placeholder="password" required><br><br>
+
+            <img src="../photos/phone.png" alt="phone " width="20" height="20">
+            <input type="tel" id="phone" name="phone" placeholder="Phone Number" required required><br><br>
+            
+            <img src="../photos/sex.png" alt="Fname" width="20" height="20">
+            <input type="radio" id="Male" name="Sex" value="Male" required>
+            <label for="html">Male</label>
+            <input type="radio" id="css" name="Sex" value="Female">
+            <label for="css">Female</label>
+            <br><br><br>
+            <button class="btn2" style="position: center;"><a href="">
+                <h4>Add</h4>
+              </a></button>
+          </form>
+        </div>
+        <br><br>
+    </div>
+  </div>
+</body>
+</html>
