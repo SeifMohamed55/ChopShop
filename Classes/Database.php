@@ -57,7 +57,12 @@ while( $row = sqlsrv_fetch_array( $stmt, SQLSRV_FETCH_ASSOC) ) {
 sqlsrv_free_stmt($stmt);
 
 */
-
+/*
+ $rows_affected = sqlsrv_rows_affected($stmt);
+          if ($rows_affected == 0)
+              return false;
+          return true;
+  */
 
 
 /*$stmt = sqlsrv_query( $conn, $sql);

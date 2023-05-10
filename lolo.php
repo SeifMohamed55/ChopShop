@@ -1,13 +1,6 @@
 <?php
 include_once "Classes/Categories.php";
-include_once "Classes/UserType.php";
-include_once "Classes/Notifications.php";
-include_once "Classes/User.php";
-include_once "Classes/Buyer.php";
-include_once "Classes/Product.php";
 include_once "Classes/Database.php";
-include_once "Classes/Seller.php";
-include_once "Classes/Admin.php";
 
 /* echo Categories::TOYS ."<br>";
 echo Categories::ELCTRONICS."<br>";
@@ -43,11 +36,11 @@ else{
     echo "Wrong";
 } */
 
-
+/* 
  $user = new Admin("seifelden555@gmail.com", "Male", "seif","Seif-Elden" ,"Mohamed", 0,"01142236508",
   UserType::ADMIN , "52 abdel qader"); 
 
-User::register($user);
+User::register($user); */
 /* $database = new Database();
 $stmt = $database->execute("SELECT * from [user] where email = ?", array('seifelden073@gmail.com'));
  sqlsrv_fetch($stmt);
@@ -68,11 +61,6 @@ $user = User::login('seifelden073@gmail.com', 'lolo');
     echo '<script type="text/javascript">alert("'.$user1->getEmail().'");</script>';
   } */
   
- 
-  
-  
-  ?>
-
   
  
 

@@ -1,5 +1,8 @@
 <?php
 session_start();
+include '../Classes/Admin.php';
+include '../Classes/Database.php';
+include '../Classes/UserType.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -13,12 +16,12 @@ session_start();
 <body background-image: linear-gradient(to bottom, rgba(152, 64, 99), rgba(0, 0, 255, 0.5) ), url(backg.png);>
   <div id="nav">
     <ul>
-      <li><a href="reported.html" class="navitem" id="reported">Reported users</a></li>
-      <li><a href="bannedusers.html" class="navitem" id="home">Banned users</a></li>
-      <li><a href="ban.html" class="navitem">Ban/Unban users</a></li>
-      <li><a href="rmvproduct.html" class="navitem">Remove a product</a></li>
-      <li><a href="adminprofile.html" class="navitem">Profile</a></li>
-      <li><a href="addadmin.html" class="navitem">Add admin</a></li>
+      <li><a href="reported.php" class="navitem" id="reported">Reported users</a></li>
+      <li><a href="bannedusers.php" class="navitem" id="home">Banned users</a></li>
+      <li><a href="ban.php" class="navitem">Ban/Unban users</a></li>
+      <li><a href="rmvproduct.php" class="navitem">Remove a product</a></li>
+      <li><a href="adminprofile.php" class="navitem">Profile</a></li>
+      <li><a href="addadmin.php" class="navitem">Add admin</a></li>
       <li style="float: right;"><a href="../index.php" class="navitem">Logout</a></li>
 
     </ul>

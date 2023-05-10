@@ -1,3 +1,8 @@
+<?php
+include_once '../Classes/Buyer.php';
+session_start();
+$user = unserialize($_SESSION['user']);
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -5,9 +10,9 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../css/cartStyleSheet.css">
+    <link rel="stylesheet" href="../css/profileStyleSheet.css">
     <script src="Project.js"></script>
-    <title>My cart</title>
+    <title>Profile</title>
     <div id="nav">
         <ul>
             <li><a href="home.html" class="navitem" id="home">Home</a></li>
@@ -20,36 +25,15 @@
 </head>
 
 <body>
-    <div id="crttitle">
-        <p id="crttitletxt">Here is your saved products:</p>
-    </div>
-    <div id="cart">
-        <div class="cartitem">
-            <a href="product.html"><img src="../photos/RProduct1.jpg"></a>
-            <div class="desc">Waffle Maker WX2850</div>
-        </div>
-        <div class="cartitem">
-            <a href="product.html"><img src="../photos/RProduct2.jpg"></a>
-            <div class="desc">Vegetable container</div>
-        </div>
-        <div class="cartitem">
-            <a href="product.html"><img src="../photos/RProduct5.jpg"></a>
-            <div class="desc">Shoes</div>
-        </div>
-        <div class="cartitem">
-            <a href="product.html"><img src="../photos/RProduct8.jpg"></a>
-            <div class="desc">Water bottle</div>
-        </div>
+    <p id="prsnlinfo"> Personal Inforamtion :</p>
+    <div id="infobox">
+        <p id="name" class="profile"> &ensp; &emsp; name: <?php echo $user->getFname() . " " . $user->getLname(); ?> </p>
+        <p id="mail" class="profile"> &ensp; &emsp; e-mail: <?php echo $user->getEmail(); ?></p>
+        <p id="adrs" class="profile"> &ensp; &emsp; address: <?php echo $user->getAddress(); ?></p>
+        <p id="phone" class="profile"> &ensp; &emsp; phone: <?php echo $user->getPhoneNumber(); ?></p>
+        <p id="type" class="profile"> &ensp; &emsp; user type: <?php echo "Buyer" ?></p>
     </div>
     <footer>
-        <div id="back" style="background-color:#c57061">
-            <a href="#home">Purchase</a>
-        </div>
-
-        <div id="back">
-            <a href="#home">Back Top</a>
-        </div>
-
         <div id="about">
             <ul>
                 <li id="Y"><a href="https://www.youtube.com/@GoogleArabia" target="_blank">Youtube</a></li>
@@ -58,7 +42,9 @@
                 <li id="I"><a href="https://www.instagram.com/google/" target="_blank">Instagram</a></li>
             </ul>
         </div>
+        </div>
     </footer>
 </body>
 <script src="for_abdo_only.js"></script>
+
 </html>

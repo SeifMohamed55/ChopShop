@@ -23,15 +23,15 @@ if ($_SERVER['REQUEST_METHOD'] == "POST"){
         }
         
         else if ($user->getUserType() == UserType::ADMIN){
-            $_SESSION['user'] = $user;
-            exit(header("Location: http://localhost/admin/reported.html"));
+            $_SESSION['user'] = serialize($user);
+            exit(header("Location: http://localhost/admin/adminprofile.php"));
         }
         else if ($user->getUserType() == UserType::SELLER){
-            $_SESSION['user'] = $user;
-            exit(header("Location: http://localhost/seller/sellproduct.html"));
+            $_SESSION['user'] = serialize($user);
+            exit(header("Location: http://localhost/seller/sellproduct.php"));
         }
         else if ($user->getUserType() == UserType::BUYER){
-            $_SESSION['user'] = $user;
+            $_SESSION['user'] = serialize($user);
             exit(header("Location: http://localhost/buyer/home.html"));
         }
         

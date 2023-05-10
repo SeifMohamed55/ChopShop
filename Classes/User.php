@@ -44,6 +44,9 @@ abstract class User implements Notifications{
     function getNoOfCateg(){
         return $this->noOfCateg;
     }
+    function getAddress(){
+        return $this->address;
+    }
     function getFollowedCategories(){
         $database = new Database();
         $ID = User::getIDFromEmail($this->email);
