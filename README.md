@@ -8,3 +8,5 @@ produced to you by :
 3. Aly Kharbosh
 4. Omar Al-haj 
 5. Abdelrahman Sakr
+
+note: buyer and seller are missing some functionality
